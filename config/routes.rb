@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #管理者ログイン
-  devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
+
+  devise_for :admin, controllers: {
+   sessions:      'admin/sessions',
+   passwords:     'admin/passwords',
+   registrations: 'admin/registrations'
+  }
 
   #管理者側
   namespace :admin do
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    get root to: 'homes#top'
+    get '/' => 'homes#top'
   end
 
 
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
-}
+  }
 
 
   #会員側
@@ -40,7 +41,11 @@ Rails.application.routes.draw do
     get 'orders/thanx' => 'orders#thanx'
     post 'orders/confirm' => 'orders#confirm'
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+<<<<<<< HEAD
     get root to: 'homes#top'
+=======
+    root to: "homes#top"
+>>>>>>> 8be133ab01b0f7b6a27861a82511fd795ac049b7
     get 'about' => 'homes#about'
   end
 end
