@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
   
+  # before_action :authenticate_admin!
   
   def index
     @genres = Genre.all
@@ -21,6 +22,12 @@ class Admin::GenresController < ApplicationController
   end
   
   def update
+    @genre = Genre.find(params[:id])
+    if @genre.update(params_genre)
+      redirect_to admin_genres_path
+    else
+      render :edit
+    end
   end
   
   

@@ -1,6 +1,6 @@
 <div class="container">
   <thead>
-    <h2 class="page-header">ジャンル一覧・追加</h2>
+    <h2 class="page-header m-5">ジャンル一覧・追加</h2>
     <div class="row form-group text-center">
       <%= form_with model: [:admin, @genre], local: true do |f| %>
         <tr>
@@ -14,10 +14,10 @@
   
   <tbody>
     <h2>ジャンル</h2>
-    <table>
+    <table class="table table-striped">
       <% @genres.each do |genre| %>
       <tr>
-        <tb><%= genre.name %></tb>
+        <td><%= genre.name %></td>
         <td><%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-primary' %></td>
       </tr>
       <% end %>
