@@ -4,7 +4,7 @@
   <!--%= render "customers/shared/error_messages", resource: resource %>-->
 
    <div class="field">
-    <%= f.label :last_name, '(性)' %>
+    <%= f.label :last_name, '(姓)' %>
     <%= f.text_field :last_name, autofocus: true %>
     <%= f.label :first_name, '(名)' %>
     <%= f.text_field :first_name, autofocus: true %>
@@ -12,9 +12,9 @@
   
   <div class="field">
     <%= f.label :last_name_kana, '(セイ)' %>
-    <%= f.text_field :last_name, autofocus: true %>
-    <%= f.label :first_name, '(メイ)' %>
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :last_name_kana, autofocus: true %>
+    <%= f.label :first_name_kana, '(メイ)' %>
+    <%= f.text_field :first_name_kana, autofocus: true %>
   </div>
    
   
@@ -25,17 +25,17 @@
   
   <div class="field">
     <%= f.label :postal_code  %>
-    <%= f.email_field :postal_code, autofocus: true, autocomplete: "郵便番号" %>
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号" %>
   </div>
   
   <div class="field">
     <%= f.label :address  %>
-    <%= f.email_field :address, autofocus: true, autocomplete: "住所" %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "住所" %>
   </div>
   
   <div class="field">
     <%= f.label :phone_number %>
-    <%= f.email_field :phone_number, autofocus: true, autocomplete: "電話番号(ハイフンなし)" %>
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "電話番号(ハイフンなし)" %>
   </div>
   
   
