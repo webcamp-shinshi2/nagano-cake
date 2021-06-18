@@ -16,3 +16,28 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ 
+ .navbar {
+  background-color: #6a4928;
+ }
+ nav {
+  height: 80px;
+}
+footer {
+  background-color: #092237;
+  height: 80px;
+}
+footer p {
+ color: #fff;
+}
+
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
