@@ -17,14 +17,17 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
+ .logo {
+  height: 80px;
+ }
  .navbar {
-  background-color: #6a4928;
+  background-color: #4977bc;
  }
  nav {
   height: 80px;
 }
 footer {
-  background-color: #092237;
+  background-color: #6a4928;
   height: 80px;
 }
 footer p {

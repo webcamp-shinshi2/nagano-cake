@@ -2,26 +2,26 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <img src="assets/icons8.png" alt="NagonoCAKE">
+        <img class="logo" src="assets/logo.png" alt="NagonoCAKE">
       </a>
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-          <li class="nav-welcome nav-link text-light">ようこそ、<%= current_custmer.last_name %>さん！</li>
-          <li><%= link_to ' マイページ', customer_path(current_custmer), class: 'fas fa-user-circle fa-lg nav-link text-light' %></li>
-          <li><%= link_to ' 商品一覧', products_path, class: 'fas fa-birthday-cake fa-lg nav-link text-light' %></li>
-          <li><%= link_to ' カート', cart_items_path, class: 'fas fa-shopping-cart fa-lg nav-link text-light'%></li>
-          <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: 'fas fa-sign-out-alt fa-lg nav-link text-light' %></li>
+          <li class="nav-welcome nav-link text-light">ようこそ、<%= current_customer.last_name %>さん！</li>
+          <li><%= link_to ' マイページ', customer_path(current_customer), class: 'fas fa-user-circle nav-link text-light ml-2' %></li>
+          <li><%= link_to ' 商品一覧', products_path, class: 'fas fa-birthday-cake nav-link text-light ml-2' %></li>
+          <li><%= link_to ' カート', cart_items_path, class: 'fas fa-shopping-cart nav-link text-light ml-2'%></li>
+          <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light ml-2' %></li>
         <% elsif admin_signed_in? %>
-          <li><%= link_to ' 商品一覧', admin_products_path, class: 'fas fa-birthday-cake fa-lg nav-link text-light' %></li>
-          <li><%= link_to ' 会員一覧', admin_customers_path, class: '' %></li>
-          <li><%= link_to ' 注文履歴一覧', admin_path, class: '' %></li>
-          <li><%= link_to ' ジャンル一覧', admin_genres_path, class: '' %></li>
-          <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt fa-lg nav-link text-light' %></li>
+          <li><%= link_to ' 商品一覧', admin_products_path, class: 'fas fa-birthday-cake nav-link text-light ml-2' %></li>
+          <li><%= link_to ' 会員一覧', admin_customers_path, class: 'fas fa-users nav-link text-light ml-2' %></li>
+          <li><%= link_to ' 注文履歴一覧', admin_path, class: 'fas fa-gift nav-link text-light ml-2' %></li>
+          <li><%= link_to ' ジャンル一覧', admin_genres_path, class: 'fas fa-gg nav-link text-light ml-2' %></li>
+          <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light ml-2' %></li>
         <% else %>
-          <li><%= link_to ' About', about_path, class: 'fas fa-link nav-link text-light' %></li>
-          <li><%= link_to ' 商品一覧', products_path, class: 'fas fa-birthday-cake nav-link text-light' %></li>
-          <li><%= link_to ' 新規登録', new_customer_registration_path, class: 'fas fa-user-plus nav-link text-light' %></li>
-          <li><%= link_to ' ログイン', new_customer_session_path, class: 'fas fa-sign-in-alt nav-link text-light'%></li>
+          <li><%= link_to ' About', about_path, class: 'fas fa-link nav-link text-light ml-2' %></li>
+          <li><%= link_to ' 商品一覧', products_path, class: 'fas fa-birthday-cake nav-link text-light ml-2' %></li>
+          <li><%= link_to ' 新規登録', new_customer_registration_path, class: 'fas fa-user-plus nav-link text-light ml-2' %></li>
+          <li><%= link_to ' ログイン', new_customer_session_path, class: 'fas fa-sign-in-alt nav-link text-light ml-2'%></li>
         <% end %>
         </ul>
     </div>

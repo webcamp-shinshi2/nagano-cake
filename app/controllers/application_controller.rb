@@ -12,10 +12,12 @@ class ApplicationController < ActionController::Base
   end
     
   def after_sign_out_path_for(resource)
-    if customer_signed_out?
+    
+    case resource
+    when :admin
+      admin_session_path
+    when :customer
       root_path
-    else
-      new_admin_session
     end
   end
 
