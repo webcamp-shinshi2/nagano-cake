@@ -11,10 +11,11 @@
   </thead>
   <tbody>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+         <% @order_details.each do |order_detail| %>
+        <td><%= order_detail.created_at %></td>
+        <td><%= order_detail.name %></td>
+        <td><%= order_detail.count %></td>
+        <td><%= order_detail.status %></td>
       </tr>
   </tbody>
 </table>

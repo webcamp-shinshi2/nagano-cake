@@ -12,8 +12,9 @@
   </thead>
   <tbody>
       <tr>
-        <td></td>
-        <td></td>
+        <% @products.each do |product| %>
+        <td><%= product %></td>
+        <td><%= product.name %></td>
         <td></td>
         <td></td>
         <td></td>
