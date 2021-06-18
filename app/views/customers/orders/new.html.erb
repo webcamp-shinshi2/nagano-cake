@@ -22,15 +22,22 @@
         <%= f.radio_button :address, 0, checked: true %>
         <%= f.label :address, 'ご自身の住所', value: 0 %><br>
          <!--current_costomer情報入れる-->
-         <!--〒%= current_costomer.postal_code %>-->
-         <!--  %= current_customer.address %> <br>-->
-         <!--  %= current_customer.last_name %> %= current_customer.first_name %>-->
+         <!--〒%= @costomer.postal_code %>-->
+         <!--  %= @customer.address %> <br>-->
+         <!--  %= @customer.last_name + @customer.first_name %>-->
 
 
         <%= f.radio_button :address_option, 1 %>
-        <%= f.label :address, '登録済住所から選択', value: 1 %>
-        <!--current_costomerの登録済み住所入れる-->
-
+        <%= f.label :address, '登録済住所から選択', value: 1 %><br>
+        <%= f.corection_select
+        # <!--current_costomerの登録済み住所入れる-->
+          <% @customer_addresses.each do |customer_address| %>
+            <option value="<%= customer_adress.id %>">
+              <%= "〒" + customer_adress.postal_code %>
+              <%= customer_adress.address %>
+              <%= "　" + customer_adress.address_name %>
+            </option>
+          <% end %>
     </div>
 
         <%= f.radio_button :address, 2 %>
