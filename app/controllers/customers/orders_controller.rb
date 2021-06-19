@@ -7,12 +7,13 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
-     @order = Order.new(order_params)
-     @order.save
-     redirect_to customers_confirm_path
+    # @order = Order.new(order_params)
+    # @order
+    # redirect_to customers_confirm_path
   end
 
   def confirm
+    
   end
 
   def thanx

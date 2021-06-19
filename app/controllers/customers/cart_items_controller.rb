@@ -11,14 +11,18 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def create
-    cart_item = current_customer.cart_items.new(cart_item_params)
-    cart_item.save
-    cart_item.product = CartItem.find_by(product_id: cart_item.product_id, customer_id: current_customer.id)
-
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    @cart_item.save
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      if cart_item.product_id == @cart_item.product_id
+        new_amount = cart_item.amount + @cart_item.amount
+        cart_item.update_attribute(:amount, new_amount)
+        @cart_item.delete
+      end
+    end
+    @cart_item.save
     redirect_to cart_items_path
-    # , notice: "カートに追加しました"
-
-
   end
 
   def update
