@@ -8,9 +8,9 @@ class Customers::CartItemsController < ApplicationController
 
   def create
     cart_item = current_customer.cart_items.new(cart_item_params)
-    # cart_item.product = params[:cart_item][:product_id]
-    cart_item.product = Cartitem.find_by(product_id: cart_item.product_id, customer_id: current_customer.id)
-    cart_item.product.save
+    cart_item.save
+    
+    
     redirect_to cart_items_path
   end
 

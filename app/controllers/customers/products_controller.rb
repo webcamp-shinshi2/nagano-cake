@@ -10,7 +10,7 @@ class Customers::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     # form_withのための空のインスタンス
-    @cart_items = CartItem.new
+    @cart_item = CartItem.new
   end
   
   def product_params
