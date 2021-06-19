@@ -19,12 +19,12 @@ Customer.create!(last_name: "紳士",
                 phone_number: "09012345678",
                 reset_password_token: "50",
                 )
-                
+
 Admin.create!(email: "admin@test.com",
               password: "admintest",
               password_confirmation: "admintest"
               )
-              
+
 Genre.create!(name: "ケーキ")
 
 Product.create!(name: "チーズケーキ",
@@ -33,11 +33,16 @@ Product.create!(name: "チーズケーキ",
                 price: 500,
                 is_sale: true,
                 )
-                
+
  Product.create!(name: "ショートケーキ",
                 genre_id: 1,
                 introduction: "ショートケーキ",
                 price: 500,
                 is_sale: true,
-                )               
-                
+                )
+
+  Address.create!(name: "淑女花子",
+                  customer_id: 1,
+                  address: "埼玉県三郷市〇〇町0-0",
+                  postal_code: "3456789"
+                  )
