@@ -20,9 +20,9 @@ Customer.create!(last_name: "紳士",
                 reset_password_token: "50",
                 )
                 
-Admin.create!(email: "admin@admin.com",
-              passward: "admin",
-              password_confirmation: "admin",
-              reset_password_token: "50",
-              admin: true
-              )
+# Admin.create!(email: "admin@admin.com",
+              # passward: "admin",
+              # password_confirmation: "admin",
+              # reset_password_token: "50",
+              # admin: true
+              # )

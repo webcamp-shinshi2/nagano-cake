@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_085532) do
     t.datetime "updated_at", null: false
   end
 
-  create_tabrails", force: :cascade do |t|
+  create_table "order_details", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "order_id", null: false
     t.integer "amount", null: false
