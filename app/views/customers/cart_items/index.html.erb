@@ -1,3 +1,7 @@
 <h1>Cart_items#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
-Hello
+<h3>ショッピングカート</h3>
+  <% @cart_items.each do |cart_item| %>
+    <%= cart_item.product.name %>
+    ¥<%= ((cart_item.product.price * 1.1).floor).to_s(:delimited) %>
+     <%= cart_items.product.amount %>
+  <% end %>

@@ -11,8 +11,8 @@ Customer.create!(last_name: "紳士",
                 last_name_kana: "シンシ",
                 first_name_kana: "タロウ",
                 email: "test@test.com",
-                password: "passward",
-                password_confirmation: "passward",
+                password: "password",
+                password_confirmation: "password",
                 is_deleted: false,
                 postal_code: "1234567",
                 address: "東京都渋谷区代々木神園町0-0",
@@ -20,9 +20,24 @@ Customer.create!(last_name: "紳士",
                 reset_password_token: "50",
                 )
                 
-Admin.create!(email: "admin@admin.com",
-              passward: "admin",
-              password_confirmation: "admin",
-              reset_password_token: "50",
-              admin: true
+Admin.create!(email: "admin@test.com",
+              password: "admintest",
+              password_confirmation: "admintest"
               )
+              
+Genre.create!(name: "ケーキ")
+
+Product.create!(name: "チーズケーキ",
+                genre_id: 1,
+                introduction: "濃厚なチーズケーキでおいしい",
+                price: 500,
+                is_sale: true,
+                )
+                
+ Product.create!(name: "ショートケーキ",
+                genre_id: 1,
+                introduction: "ショートケーキ",
+                price: 500,
+                is_sale: true,
+                )               
+                

@@ -8,7 +8,8 @@ class Customers::OrdersController < ApplicationController
   
   def create
      @order = Order.new(order_params)
-     @order.save
+     @order.save(order_params)
+     redirect_to 
   end
 
   def confirm
@@ -21,5 +22,10 @@ class Customers::OrdersController < ApplicationController
   end
 
   def show
+  end
+  
+  private 
+  def order_params
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method, :total_price, :postage)
   end
 end
