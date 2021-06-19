@@ -1,24 +1,14 @@
-<h1>商品一覧</h1>
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h5 class="d-inline bg-gray pr-3 pl-3 page-title">商品一覧</h5>
+  </div>
+</div>
+<div class="row justify-content-center mt-3">
+  <div class="col-md-10 page-title">
+      <%= render 'admin/products/index', products: @products  %>
 
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜き価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <% @products.each do |product| %>
-        <td><%= product %></td>
-        <td><%= product.name %></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <% end %>
-      </tr>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-md-4 offset-md-5 pl-5 mt-3">
+      <%= paginate @products %>
+    </div>
+  </div>

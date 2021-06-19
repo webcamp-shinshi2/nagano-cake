@@ -1,2 +1,53 @@
-<h1>Admin::Products#show</h1>
-<p>Find me in app/views/admin/products/show.html.erb</p>
+<div class="row">
+  <div class="col-md-6 offset-md-2">
+    <h5 class="d-inline bg-gray pr-3 pl-3 page-title">商品詳細</h5>
+  </div>
+</div>
+
+<div class="row mt-5 offset-md-2 page-title">
+    <div class="col-md-5 text-center">
+      <%= attachment_image_tag @product, :image, :fill, 300, 300, format: 'jpeg', size: "300x300" , fallback: "main-visual-image.jpg"%>
+    </div>
+    <div class="col-md-5 ml-5 text-left">
+
+        <div class="row my-2">
+          <div class="col">商品名</div>
+          <div class="col"><%= @product.name %></div>
+        </div>
+        <div class="row my-2">
+          <div class="col">商品説明</div>
+          <div class="col"><%= @product.introduction %></div>
+        </div>
+        <div class="row my-2">
+          <div class="col">ジャンル</div>
+          <div class="col"><%= @product.genre.name %></div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col ml-3">
+            <div class="row">税込価格</div>
+            <div class="row">(税抜価格)</div>
+          </div>
+          <div class="col my-auto pl-0"><%= @product.price %> (<%= @product.price.to_s(:delimited) %>) 円</div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col">販売ステータス</div>
+          <div class="col">
+            <% if @product.is_sale == true %>
+            <p class="text-success">販売中</p>
+            <% else %>
+            <p class="text-secondary">販売停止中</p>
+            <% end %>
+          </div>
+        </div>
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mt-3 text-center offset-md-4">
+      <div class=" mt-2 mb-4">
+         <%= link_to "編集する", edit_admin_product_path(@product.id), class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
