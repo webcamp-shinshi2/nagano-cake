@@ -15,15 +15,12 @@
         <td><%= link_to product.name, admin_product_path(product.id) %></td>
         <td><%= product.price.to_s(:delimited) %></td>
         <td><%= product.genre.name %></td>
-        <% if product.is_sale == true %>
-         <td class="text-success">
-           <%= product.is_sale_to_string %>
-         </td>
-        <% else %>
-         <td class="text-secondary">
-           <%= product.is_sale_to_string %>
-         </td>
-        <% end %>
+        <td><% if product.is_sale == true %>
+              <p class="text-success">販売中</p>
+            <% else %>
+              <p class="text-secondary">販売停止中</p>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

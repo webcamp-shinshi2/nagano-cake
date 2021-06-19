@@ -1,4 +1,4 @@
-<h1>注文履歴一覧</h1>
+<h5>注文履歴一覧</h5>
 
 <table class='table table-hover table-inverse'>
   <thead>
@@ -10,12 +10,13 @@
     </tr>
   </thead>
   <tbody>
+     <% @orders.each do |order| %>
       <tr>
-         <% @order_details.each do |order_detail| %>
-        <td><%= order_detail.created_at %></td>
-        <td><%= order_detail.name %></td>
-        <td><%= order_detail.count %></td>
-        <td><%= order_detail.status %></td>
+        <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order) %></td>
+        <td><%= order.customer.last_name + order.customer.first_name %></td>
+        <td><%= order.order_details.count %></td>
+        <td><%= order.status %></td>
+      　<% end %>
       </tr>
   </tbody>
 </table>
