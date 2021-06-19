@@ -17,23 +17,32 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
- .logo {
+ .application {
+  margin: 0;
+  padding: 0;
+ }
+ 
+ // header
+ .logo-navbar {
   height: 80px;
  }
+ img.logo-navbar {
+  width: 4rem ;
+  height: 4rem ;
+ }
  .navbar {
-  background-color: #4977bc;
+  background-color: #412b1c;
  }
  nav {
   height: 80px;
 }
-footer {
-  background-color: #6a4928;
-  height: 80px;
-}
-footer p {
- color: #fff;
-}
 
+
+// body
+main {
+ background-color: #e3deda;
+ height: 658px;
+}
 body,
 #wrapper {
   display: flex;
@@ -41,6 +50,15 @@ body,
   min-height: 100vh;
 }
 
+
+// footer
 footer {
   margin-top: auto;
+}
+footer {
+  background-color: #b3976d;
+  height: 80px;
+}
+footer p {
+ color: #fff;
 }

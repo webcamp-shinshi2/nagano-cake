@@ -2,8 +2,12 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <img class="logo" src="assets/logo.png" alt="NagonoCAKE">
+        <img class="logo-navbar" src="assets/logo.jpeg" alt="NagonoCAKE">
       </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li class="nav-welcome nav-link text-light">ようこそ、<%= current_customer.last_name %>さん！</li>
@@ -24,6 +28,7 @@
           <li><%= link_to ' ログイン', new_customer_session_path, class: 'fas fa-sign-in-alt nav-link text-light ml-2'%></li>
         <% end %>
         </ul>
+      </div>
     </div>
   </nav>
 </header>
