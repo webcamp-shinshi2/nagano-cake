@@ -11,9 +11,9 @@
             <%= f.submit "変更", class: "btn btn-success" %>
         <% end %>
 
-        <!--%= ((cart_item.product.price * 1.1) * cart_item.amount).round.to_s(:delimited) %>-->
 
-        <%= link_to "削除する", destroy_cart_path(cart_item), method: :delete %>
+
+        <%= link_to "削除する", cart_item_path(cart_item), method: :delete %>
     <% end %>
 
     <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>

@@ -1,15 +1,15 @@
 class Customers::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @customer = Customer.find(current_customer.id)
-    @customer_addresses = Address.where(customer_id: current_customer.id)
-    
+    @customer = current_customer
+    @addresses = Address.where(customer_id: current_customer.id)
+
   end
-  
+
   def create
      @order = Order.new(order_params)
-     @order.save(order_params)
-     redirect_to 
+     @order.save
+     redirect_to customers_confirm_path
   end
 
   def confirm
@@ -23,8 +23,8 @@ class Customers::OrdersController < ApplicationController
 
   def show
   end
-  
-  private 
+
+  private
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method, :total_price, :postage)
   end
