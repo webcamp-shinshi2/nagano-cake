@@ -16,3 +16,49 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ 
+ .application {
+  margin: 0;
+  padding: 0;
+ }
+ 
+ // header
+ .logo-navbar {
+  height: 80px;
+ }
+ img.logo-navbar {
+  width: 4rem ;
+  height: 4rem ;
+ }
+ .navbar {
+  background-color: #412b1c;
+ }
+ nav {
+  height: 80px;
+}
+
+
+// body
+main {
+ background-color: #e3deda;
+ height: 658px;
+}
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+// footer
+footer {
+  margin-top: auto;
+}
+footer {
+  background-color: #b3976d;
+  height: 80px;
+}
+footer p {
+ color: #fff;
+}
