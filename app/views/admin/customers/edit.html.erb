@@ -1,2 +1,56 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container mt-3">
+  <h5 class="col-md-2 bg-light text-center">
+    <%= @customer.last_name %> <%= @customer.first_name %>さんの会員情報編集
+  </h5>
+  <div class="row form-group">
+    <div class="col-md-8 mx-auto w-auto">
+      <%= form_with model: [:admin, @customer], local:true do |f| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= f.label :"会員ID" %></td>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"氏名" %></td>
+            <td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"フリガナ" %></td>
+            <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"郵便番号" %></td>
+            <td><%= f.text_field :postal_code, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"住所" %></td>
+            <td><%= f.text_field :address, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"電話番号" %></td>
+            <td><%= f.text_field :phone_number, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"メールアドレス" %></td>
+            <td><%= f.text_field :email, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"会員ステータス" %></td>
+            <td>
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, "有効", value:false %>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, "退会", value:true %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+            <td><%= link_to "戻る", admin_customer_path(@customer), class: "btn btn-primary" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
