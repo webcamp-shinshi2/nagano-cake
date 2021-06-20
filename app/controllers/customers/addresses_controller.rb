@@ -1,24 +1,46 @@
 class Customers::AddressesController < ApplicationController
   
+  before_action :authenticate_customer!
+  
   def index
+    @addresses = current_customer.address
+    @address = Address.new
   end
   
   def create
+    @address = Address.new(params_address)
+    if @address.save
+      flash[:notice] = "新規配送先住所を登録しました"
+      redirect_to addresses_path
+    else
+      render :index
+    end
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
   
   def update
+    @address = Address.find(params[:id])
+    if @address.update(params_address)
+      flash[:notice] = "配送先を変更しました"
+      redirect_to addresses_
+    else
+      render :edit
+    end
   end
   
   def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to addresses_path
   end
   
   
   private
   
-  def address_params
+  def params_address
     params.require(:address).permit(:postal_code, :address, :name)
   end
     
