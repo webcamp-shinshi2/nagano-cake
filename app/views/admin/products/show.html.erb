@@ -6,7 +6,7 @@
 
 <div class="row mt-5 offset-md-2 page-title">
     <div class="col-md-5 text-center">
-      <%= attachment_image_tag @product, :image, :fill, 300, 300, format: 'jpeg', size: "300x300" , fallback: "main-visual-image.jpg"%>
+      <%= attachment_image_tag @product, :image, format: 'jpeg', size: "300x300" , fallback: "main-visual-image.jpg"%>
     </div>
     <div class="col-md-5 ml-5 text-left">
 
@@ -28,7 +28,7 @@
             <div class="row">税込価格</div>
             <div class="row">(税抜価格)</div>
           </div>
-           <div class="col my-auto pl-0"><!--<= @product.price.to_s(:delimited) %>--> (<%= @product.price.to_s(:delimited) %>)円</div>
+           <div class="col my-auto pl-0"><%= (@product.price * 1.1).round.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</div>
         </div>
 
         <div class="row my-2">
