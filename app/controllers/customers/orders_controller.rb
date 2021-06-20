@@ -1,9 +1,12 @@
 class Customers::OrdersController < ApplicationController
   def new
-    @order = Order.new
-    @customer = current_customer
-    @addresses = Address.where(customer_id: current_customer.id)
-
+    if cart_items = CartItem.where(customer_id: current_customer.id).present?
+      @order = Order.new
+      @customer = current_customer
+      @addresses = Address.where(customer_id: current_customer.id)
+    else
+      redirect_to cart_items_path, alert: "カートに商品が入っておりません"
+    end
   end
 
   

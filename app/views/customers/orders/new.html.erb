@@ -2,7 +2,7 @@
 
 <h2>注文情報入力</h2>
 
-<%= form_with model: @order, url:customers_confirm_path, method: :post, local: true do |f| %>
+<%= form_with model: @order, url:customers_confirm_path, local: true do |f| %>
     <div class="form-group">
 
         <h5><%= f.label :payment_method, '支払い方法' %></h5>
