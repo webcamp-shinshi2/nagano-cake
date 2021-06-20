@@ -9,13 +9,48 @@ class Customers::OrdersController < ApplicationController
     end
   end
 
-  
+
 
   def confirm
-    
-    
+    @order = Order.new(order_params)
+    @cart_items = current_customer.cart_items
+
+    @order.postage = 800
+    @total_price = 0
+    @cart_items.each do |cart_item|
+      @total_price += cart_item.amount * cart_item.product.tax_included_price.to_i
+    end
+
+    @order.total_price =  @order.postage + @total_price
+
+    @order.payment_method = params[:order][:payment_method]
+    @order.customer_id = current_customer.id
+    if params[:order][:address] == "0"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.address_name = current_customer.last_name + current_customer.first_name
+      render :confirm
+
+    elsif params[:order][:address] == "1"
+      @address = Address.find(params[:address])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.address_name = @address.address_name
+      render :confirm
+    else
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.address_name = params[:order][:name]
+      render :confirm
+    end
+    if @order.invalid?
+      @customer = Customer.find(current_customer.id)
+      @customer_adresses = Address.where(customer_id: current_customer.id)
+      render :new
+    end
+
   end
-  
+
   def create
     # @order = Order.new(order_params)
     # @order
