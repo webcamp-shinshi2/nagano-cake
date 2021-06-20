@@ -1,2 +1,57 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+
+
+<h2>注文情報入力</h2>
+
+<%= form_with model: @order, url:customers_confirm_path, method: :post, local: true do |f| %>
+    <div class="form-group">
+
+        <h5><%= f.label :payment_method, '支払い方法' %></h5>
+
+        <%= f.radio_button :payment_method, :"クレジットカード", checked: true %>
+        <%=f.label:payment_method, 'クレジットカード', value: :クレジットカード %><br>
+
+        <%= f.radio_button :payment_method, :"銀行振込", checked: true %>
+        <%= f.label :payment_method, '銀行振込',value: :銀行振込 %>
+    </div>
+
+    <div class="form-group">
+
+        <h5><%= f.label :address, 'お届け先' %></h5>
+
+
+        <%= f.radio_button :address, 0, checked: true %>
+        <%= f.label :address, 'ご自身の住所', value: 0 %><br>
+
+         〒<%= @customer.postal_code %>
+           <%= @customer.address %> <br>
+           <%= @customer.last_name + @customer.first_name %><br>
+
+
+        <%= f.radio_button :address, 1 %>
+        <%= f.label :address, '登録済住所から選択', value: 1 %><br>
+        <%= f.collection_select(:address_id, @addresses, :id, :address) %>
+
+    </div>
+
+        <%= f.radio_button :address, 2 %>
+        <%= f.label :address, '新しいお届け先', value: 2 %>
+
+    <div class="field form-group">
+        <%= f.label :postal_code, '郵便番号（ハイフンなし）' %>
+        <%= f.text_field :postal_code, placeholder: '0000000' %>
+    </div>
+
+    <div class="field form-group">
+        <%= f.label :address, '住所' %>
+        <%= f.text_field :address, placeholder: '東京都○○区○○町0-0' %>
+    </div>
+
+    <div class="field form-group">
+        <%= f.label :name, '宛名' %>
+        <%= f.text_field :name, placeholder: '紳士太郎' %>
+    </div>
+
+    <div class="text_center">
+        <%= f.submit '確認画面へ進む',  class: "btn btn-success" %>
+    </div>
+  <% end %>
