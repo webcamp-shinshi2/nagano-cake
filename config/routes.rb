@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   #管理者ログイン
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :admin, controllers: {
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
    passwords:     'admin/passwords',
    registrations: 'admin/registrations'
   }
-  
+
   #管理者側
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     get '/' => 'homes#top'
   end
-  
-  
+
+
   #会員ログイン
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
@@ -26,16 +26,18 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
   }
 
-  
+
   #会員側
   scope module: :customers do
     resources :customers, only: [:show, :edit, :update]
     post 'customers/confirm' => 'customers#confirm'
     patch 'customers/out' => 'customers#out'
     resources :products, only: [:index, :show]
-    resources :cart_items, only: [:index, :update, :create]
-    delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
-    delete 'cart_items/:id' => 'cart_items#destroy', as: 'destroy_cart'
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      collection do
+      delete 'destroy_all'
+      end
+    end
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/thanx' => 'orders#thanx'
     post 'orders/confirm' => 'orders#confirm'
