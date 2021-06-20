@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <thead>
     <h2 class="page-header m-5">ジャンル一覧・追加</h2>
     <div class="row form-group text-center">
@@ -18,7 +18,7 @@
       <% @genres.each do |genre| %>
       <tr>
         <td><%= genre.name %></td>
-        <td><%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-primary' %></td>
+        <td><%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
       </tr>
       <% end %>
     </table>
