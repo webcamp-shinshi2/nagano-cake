@@ -16,7 +16,13 @@
         <td><%= order.customer.last_name + order.customer.first_name %></td>
         <td><%= order.order_details.count %></td>
         <td><%= order.status %></td>
-      　<% end %>
       </tr>
+     <% end %>
   </tbody>
 </table>
+
+ <div class="row">
+    <div class="col-md-4 offset-md-5 pl-5 mt-3">
+      <%= paginate @orders %>
+    </div>
+  </div>
