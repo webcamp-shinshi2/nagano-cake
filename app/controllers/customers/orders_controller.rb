@@ -3,7 +3,7 @@ class Customers::OrdersController < ApplicationController
     if cart_items = CartItem.where(customer_id: current_customer.id).present?
       @order = Order.new
       @customer = current_customer
-      @addresses = Address.where(customer_id: current_customer.id)
+      @addresses = current_customer.addresses
     else
       redirect_to cart_items_path, alert: "カートに商品が入っておりません"
     end
@@ -30,23 +30,22 @@ class Customers::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.address_name = current_customer.last_name + current_customer.first_name
       render :confirm
-
     elsif params[:order][:address] == "1"
-      @address = Address.find(params[:address])
-      @order.postal_code = @address.postal_code
-      @order.address = @address.address
-      @order.address_name = @address.address_name
+      @address = Address.find(params[:order], [:address])
+      @order.postal_code = addresses.postal_code
+      @order.address = addresses.address
+      @order.name = addresses.name
       render :confirm
     else
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
-      @order.address_name = params[:order][:name]
+      @order.name = params[:order][:name]
       render :confirm
     end
     if @order.invalid?
       @customer = Customer.find(current_customer.id)
       @customer_adresses = Address.where(customer_id: current_customer.id)
-      render :new
+
     end
 
   end
@@ -68,6 +67,6 @@ class Customers::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method, :total_price, :postage)
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method, :total_price, :postage, :status)
   end
 end

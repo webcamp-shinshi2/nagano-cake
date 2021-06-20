@@ -10,20 +10,20 @@
       </tr>
     </thead>
     <tbody>
-      <% @cart_items.each do |cart_irem| %>
+      <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
             <%= attachment_image_tag cart_item.product, :image, :fill, 70, 50, format: "jpeg" %>
-            <%= cartitem.product.name %>
+            <%= cart_item.product.name %>
           </td>
           <td>
-            <%= cart_item.product.tax_included_price.to_s(:delimited) %>
+            <%= cart_item.product.tax_included_price.floor.to_s(:delimited) %>
           </td>
           <td>
             <%= cart_item.amount %>
           </td>
           <td>
-            <%= (cart_item.product.tax_included_price * cart_irem.amount).to_s(:delimited) %>
+            <%= (cart_item.product.tax_included_price * cart_item.amount).floor.to_s(:delimited) %>
           </td>
         </tr>
       <% end %>
@@ -57,7 +57,7 @@
       <%= @order.name %>
     </div>
 
-    <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
+    <%= form_with model: @order, local: true do |f| %>
       <%= f.hidden_field :customer_id %>
       <%= f.hidden_field :postage %>
       <%= f.hidden_field :total_price %>
