@@ -1,0 +1,63 @@
+<%= form_with model: @customer do |f| %>
+<%= render 'layouts/errors', obj: f.object %><% end %>
+<h5 class="ml-4 my-4 bg-light d-inline-flex">会員情報編集</h5>
+<div class="ml-5">
+  <%= form_with model: @customer, url: customer_path ,method: :PATCH, local: true do |f| %>
+  <div class="row">
+    <label class="col-lg-2">氏名</label>
+    <div class="col-lg-3 yoko">
+      <%= f.text_field :last_name, autoforcus: true %>
+      <%= f.text_field :first_name, autoforcus: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-2">フリガナ</label>
+    <div class="col-lg-3 yoko">
+      <%= f.text_field :last_name_kana, autoforcus: true %>
+      <%= f.text_field :first_name_kana, autoforcus: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-2">郵便番号</label>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code, autofocus: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-2">住所</label>
+    <div class="col-lg-6">
+      <%= f.text_field :address, autofocus: true, :size=>"90x10" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-2">電話番号</label>
+    <div class="col-lg-3">
+      <%= f.text_field :phone_number, autofocus: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-2">メールアドレス</label>
+    <div class="col-lg-3">
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <tr>
+      <td>
+        <label class="col-lg-2"></label>
+        <div class="col-lg-5">
+        <%= f.submit "編集内容を保存", class: "btn btn-success btn-sm" %>
+        <label class="col-lg-2"></label>
+        <!--%= link_to "退会する", confirm_customer_path, class: "btn btn-danger btn-sm" %>-->
+        </div>
+      </td>
+    </tr>
+  </div>
+<% end %>
+</div>
