@@ -94,16 +94,20 @@ DMM Webcampのチーム開発課題として作成した、長野県の洋菓子
 ## 設計概要
 
 ### ER図
-![ER](images/ER.png)
+
+![ER図](https://user-images.githubusercontent.com/81369773/122743378-e7897b00-d2c1-11eb-8acc-d31ac8d90d70.png)
+
 
 ### アプリケーション詳細設計図
 * 会員側
 
-![customer](images/customer_application_design.png)
+![アプリ設計書（会員）](https://user-images.githubusercontent.com/81369773/122743636-1e5f9100-d2c2-11eb-824e-e3e21f89286e.png)
+
 
 * 管理者側
 
-![admin](images/admin_application_design.png)
+![アプリ設計書（管理者）](https://user-images.githubusercontent.com/81369773/122743492-fe2fd200-d2c1-11eb-95cd-e256a8227b6d.png)
+
 
 ### 使用言語
 * HTML & CSS
