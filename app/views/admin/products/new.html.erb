@@ -1,2 +1,55 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<div class="row">
+    <div class="col-md-6 offset-md-2">
+      <h5 class="d-inline bg-gray pr-3 pl-3 page-title">商品編集</h5>
+    </div>
+  </div>
+
+
+<%= form_with model: [:admin, @product], local:true do |f| %>
+  <div class="row page-title">
+     <div class="col-md-8 offset-md-3 mt-4 pl-5">
+       <div class="form-group form-inline pl-3">
+         <div>商品画像</div>
+         <div class="ml-5 pl-3"><%= f.attachment_field :image %></div>
+       </div>
+
+
+       <div class="form-group form-inline">
+       　<div class= "mr-3">商品名</div>
+         <div class="ml-5 pl-3"><%= f.text_field :name, placeholder: "商品名", size: "30", class: "form-control" %></div>
+       </div>
+
+
+       <div class="form-group form-inline">
+       　<div>商品説明</div>
+         <div class="ml-5 pl-3"><%= f.text_area :introduction, placeholder: "ここに説明文を記述します", size: "30x5", class: "form-control" %></div>
+       </div>
+
+       <div class="form-group form-inline">
+       　<div>ジャンル</div>
+         <div class="ml-5 pl-3"> <%= f.collection_select :genre_id, Genre.all, :id, :name, size: "30", class: "form-control" %></div>
+       </div>
+
+       <div class="form-group form-inline">
+       　<div>税抜価格</div>
+         <div class="ml-5 pl-3"><%= f.text_field :price, placeholder: "1000", size: "30", class: "form-control" %> 円</div>
+       </div>
+
+       <div class="form-group form-inline">
+       　<div>販売ステータス</div>
+
+          　<%= f.radio_button :is_sale, :true %>
+          　<%= f.label :is_sale, "販売中", {value: :true, style: "display: inline-block;"} %>
+          　<%= f.radio_button :is_sale, :false %>
+          　<%= f.label :is_sale, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+       </div>
+     </div>
+   <div class="col mx-auto mb-4 text-center">
+      <%= button_tag :method => :get, :class => "btn", onfocus: "this.blur();" do %>
+        <span class= "col btnripple">
+          <%= f.submit "新規登録", class: 'btn btn-success' %>
+        </span>
+      <% end %>
+   </div>
+ </div>
+<% end %> 
