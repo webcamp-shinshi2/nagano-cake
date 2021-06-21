@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :create, :destroy]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanx' => 'orders#thanx'
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show] 
     
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
     root to: "homes#top"

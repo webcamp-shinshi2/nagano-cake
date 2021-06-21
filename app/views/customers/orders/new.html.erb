@@ -1,4 +1,18 @@
+<% if @order.errors.any? %>
 
+
+
+
+      <% @order.errors.full_messages.each do |message| %>
+
+<%= message %>
+
+      <% end %>
+
+
+
+
+<% end %>
 
 <h2>注文情報入力</h2>
 
@@ -19,7 +33,7 @@
         <h5><%= f.label :address, 'お届け先' %></h5>
 
 
-        <%= f.radio_button :address, 0, checked: true %>
+        <%= f.radio_button :address_option, 0, checked: true %>
         <%= f.label :address, 'ご自身の住所', value: 0 %><br>
 
          〒<%= @customer.postal_code %>
@@ -27,13 +41,13 @@
            <%= @customer.last_name + @customer.first_name %><br>
 
 
-        <%= f.radio_button :address, 1 %>
+        <%= f.radio_button :address_option, 1 %>
         <%= f.label :address, '登録済住所から選択', value: 1 %><br>
         <%= f.collection_select :address_id, current_customer.addresses, :id, :address %>
 
     </div>
 
-        <%= f.radio_button :address, 2 %>
+        <%= f.radio_button :address_option, 2 %>
         <%= f.label :address, '新しいお届け先', value: 2 %>
 
     <div class="field form-group">
