@@ -1,3 +1,45 @@
-<h1></h1>
-<p>Find me in app/views/homes/top.html.erb</p>
-
+<div class="row">
+  <div class="col-lg-10 mt-4">
+    <div class="col-lg-10 offset-2 text-center align-text-center ">
+      <div id="container">
+        <div id="theTarget">
+          <div class="image1 mb-5">
+            <div class="top-content">
+              <div class="text-color">
+                <h3 class="top-text">ようこそ、ながのCAKEへ！</h3><br>
+                <p>購⼊には会員登録が必要になります。<br>
+                   このサイトは、ケーキ販売のECサイトになります。<br>
+                   会員でない⽅も商品の閲覧はできますが、<br>
+                   購⼊には会員登録が必要になります。
+                </p>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center align-items-center">
+  <div class="col-lg-10 col-md-11 col-sm-12 mt-2">
+    <h3>新着商品</h3>
+    <div class="d-flex flex-wrap mt-2">
+      <% @products.last(4).each do |product| %>
+        <div class="col-lg-3 products__imagez">
+          <%= link_to product_path(product), style: "color: black;" do %>
+            <div class="image-photo">
+              <%= attachment_image_tag product, :image, fallback:"no-image.png", size: "180x150", class: "shadow" %>
+            </div>
+            <br>
+            <%= product.name %>
+            <br>
+            <%= (product.price*1.1).round.to_s(:delimited) %>円
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to "全ての商品を見る▶", products_path %>
