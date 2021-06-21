@@ -95,7 +95,8 @@ DMM Webcampのチーム開発課題として作成した、長野県の洋菓子
 
 ### ER図
 
-![ER図](https://user-images.githubusercontent.com/81369773/122743378-e7897b00-d2c1-11eb-8acc-d31ac8d90d70.png)
+
+![ER図](https://user-images.githubusercontent.com/81369773/122745471-fffa9500-d2c3-11eb-84c3-f26f1e3d4632.png)
 
 
 ### アプリケーション詳細設計図
