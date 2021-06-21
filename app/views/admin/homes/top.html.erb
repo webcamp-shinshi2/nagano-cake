@@ -1,20 +1,34 @@
-<h1>注文履歴一覧</h1>
-
-<table class='table table-hover table-inverse'>
-  <thead>
+<div class="container">
+ <div class="row m-4">
+  <div class="col">
+   <h5 class="d-inline bg-gray pr-3 pl-3 page-title">注文履歴一覧</h5>
+  </div>
+ </div>
+ 
+ <div class="row page-title">
+  <table class='table table-hover table-inverse'>
+   <thead>
     <tr>
       <th>購入日時</th>
-      <th>購入者</th></th>
+      <th>購入者</th>
       <th>注文個数</th>
       <th>注文ステータス</th>
     </tr>
-  </thead>
+   </thead>
   <tbody>
+     <% @orders.each do |order| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order) %></td>
+        <td><%= order.customer.last_name + order.customer.first_name %></td>
+        <td><%= order.order_details.count %></td>
+        <td><%= order.status %></td>
       </tr>
+     <% end %>
   </tbody>
 </table>
+
+ <div class="row">
+    <div class="col-md-4 offset-md-5 pl-5 mt-3">
+      <%= paginate @orders %>
+    </div>
+  </div>
