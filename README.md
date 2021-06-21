@@ -98,10 +98,10 @@ DMM Webcampのチーム開発課題として作成した、長野県の洋菓子
 
 ### アプリケーション詳細設計図
 * 会員側
-!アプリケーション詳細設計書（会員側）(images/customer_application_design.png "customer")
+![customer](images/customer_application_design.png)
 
 * 管理者側
-!アプリケーション詳細設計書（管理者側）(images/admin_application_design.png "admin")
+![admin](images/admin_application_design.png)
 
 ### 使用言語
 * HTML & CSS
