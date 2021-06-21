@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 mb-3">  
+    <div class="col-12 mb-3">
       <h3>ショッピングカート</h3>
     </div>
   </div>
-  
+
   <div class="row mb-3">
     <div class="col-12 text-right">
       <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: { confirm: "本当にカートを空にしますか？" } %>
     </div>
   </div>
-  
+
 　<div class="row">
   　<div class="col-12">
     　<table class="table table-bordered">
-      　<thead class="thead-light">
+      　<thead class="bg-light">
           <tr>
             <th class="text-center">商品名</th>
             <th class="text-center">単価(税込)</th>
@@ -23,14 +23,14 @@
             <th style="width:15%"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-light">
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td class="align-middle">
                 <%= attachment_image_tag cart_item.product, :image, :fill, 70, 50, format: "jpeg" %>
                 <%= cart_item.product.name %>
               </td>
-              <td class="text-center align-middle">  
+              <td class="text-center align-middle">
                 ¥<%= ((cart_item.product.price * 1.1).floor).to_s(:delimited) %>
               </td>
               <td class="text-center align-middle">
@@ -51,7 +51,7 @@
       </table>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-sm-6 mb-2">
       <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
@@ -62,7 +62,7 @@
       </h5>
     </div>
   </div>
-    
+
   <div class="row mt-3">
     <div class="col-12 text-center">
       <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>

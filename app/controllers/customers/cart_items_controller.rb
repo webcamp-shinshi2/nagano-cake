@@ -1,7 +1,5 @@
 class Customers::CartItemsController < ApplicationController
 
-  helper_method :current_cart
-
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total_price = 0
