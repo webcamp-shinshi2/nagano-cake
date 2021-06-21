@@ -1,14 +1,20 @@
-<h5>注文履歴一覧</h5>
-
-<table class='table table-hover table-inverse'>
-  <thead>
+<div class="container">
+ <div class="row m-4">
+  <div class="col">
+   <h5 class="d-inline bg-gray pr-3 pl-3 page-title">注文履歴一覧</h5>
+  </div>
+ </div>
+ 
+ <div class="row page-title">
+  <table class='table table-hover table-inverse'>
+   <thead>
     <tr>
       <th>購入日時</th>
-      <th>購入者</th></th>
+      <th>購入者</th>
       <th>注文個数</th>
       <th>注文ステータス</th>
     </tr>
-  </thead>
+   </thead>
   <tbody>
      <% @orders.each do |order| %>
       <tr>

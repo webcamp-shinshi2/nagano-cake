@@ -24,7 +24,6 @@ Admin.create!(email: "admin@test.com",
               password_confirmation: "admintest"
               )
 
-Genre.create!(name: "ケーキ")
 
 Product.create!(name: "チーズケーキ",
                 genre_id: 1,
