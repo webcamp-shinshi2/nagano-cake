@@ -6,8 +6,6 @@ class Product < ApplicationRecord
     
     attachment :image
     
-    def price
-      (self.price * 1.10).round
-    end
+    
     
 end

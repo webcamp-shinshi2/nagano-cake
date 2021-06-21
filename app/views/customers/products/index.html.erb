@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col_md_4">
+    <div class="col_md_8">
       <h4>商品一覧<small>(全<%= @products.count %>件)</small></h4>
     </div>
   </div>
       <div class="row">
-         <div class="col-md-4">
-           <div class="d-flex flex-wrap mt-2">
+         <div class="col-md-8">
+           <div class="d-flex flex-wrap mt-4">
             <% @products.each do |product| %>
                 <%= link_to product_path(product.id),style: "color: black;" do %>
                 　<div class="image-photo">
                   　<%= attachment_image_tag product, :image, fallback:"no-image.png", size: '200x200', class: "shadow" %>
           　　　　　　</div>
                     <div><%= product.name %></div>
-                    <div><%= product.price.to_s(:delimited) %>円</div>
+                    <div><%= (product.price*1.1).round.to_s(:delimited) %>円<small>(税込)</small></div>
                     <div><% if product.is_sale == true %>
                      　<div class="text-success">販売中</div>
                      　<% else %>

@@ -1,8 +1,9 @@
- <div ="container">
-
+<div class="row">
+  <div class="col-lg-10 mt-4">
+    <div class="col-lg-10 offset-2 text-center align-text-center ">
+      <div id="container">
+        <div id="theTarget">
           <div class="image1 mb-5">
-          <!--<div class="image2 mb-5">-->
-          <!--<div class="image3 mb-5">-->
             <div class="top-content">
               <div class="text-color">
                 <h3 class="top-text">ようこそ、ながのCAKEへ！</h3><br>
@@ -29,16 +30,16 @@
         <div class="col-lg-3 products__imagez">
           <%= link_to product_path(product), style: "color: black;" do %>
             <div class="image-photo">
-              <%= attachment_image_tag product, :image, fallback:"no-image-png", size: "180x150", class: "shadow" %>
+              <%= attachment_image_tag product, :image, fallback:"no-image.png", size: "180x150", class: "shadow" %>
             </div>
             <br>
             <%= product.name %>
             <br>
-            <%= product.price %>円
+            <%= (product.price*1.1).round.to_s(:delimited) %>円
           <% end %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-<%= link_to "全ての商品を見る▶", products_path %>
+<%= link_to "全ての商品を見る▶", products_path, style: "color: black;", class: "float-right mt-3 mb-5" %>
