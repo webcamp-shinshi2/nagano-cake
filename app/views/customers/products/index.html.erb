@@ -1,44 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col_md_12">
+    <div class="col_md_8">
       <h4>商品一覧<small>(全<%= @products.count %>件)</small></h4>
     </div>
   </div>
       <div class="row">
-        <div class="col_md_2">
-          <table class="table table-bordered genre-table">
-            <thead class="table-secondary">
-              <tr>
-                <th>ジャンル検索</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @genres.each do |genre| %>
-              <tr>
-                <td>
-                  <%= link_to genre.name, search_search_path('search[value]': genre.id, 'search[how]': "match") %>
-                </td>
-              </tr>
-            <% end %>
-            </tbody>
-         </table>
-        </div>
-         <div class="col-md-10">
-           <div class="d-flex flex-wrap mt-2">
+         <div class="col-md-8">
+           <div class="d-flex flex-wrap mt-4">
             <% @products.each do |product| %>
-                 <%= link_to product_path(product.id),　style: "color: black;" do %>
-                 <div class="image-photo">
-                  <%= attachment_image_tag product, :image, fallback:"no-image.png", size: '180x150', class: "shadow" %>
-                  </div>
+                <%= link_to product_path(product.id),style: "color: black;" do %>
+                　<div class="image-photo">
+                  　<%= attachment_image_tag product, :image, fallback:"no-image.png", size: '200x200', class: "shadow" %>
+          　　　　　　</div>
                     <div><%= product.name %></div>
-                    <div>¥<%= product.add_tax_price.to_s(:delimited) %></div>
-                    <div><% if product.is_active == true %>
-                     <div class="text-success">販売中</div>
-                     <% else %>
-                     <div class="text-black-50">売り切れ</div>
-                      <% end %>
-                    </div>
-                　<% end %>
+                    <div><%= (product.price*1.1).round.to_s(:delimited) %>円<small>(税込)</small></div>
+                    <div><% if product.is_sale == true %>
+                     　<div class="text-success">販売中</div>
+                     　<% else %>
+                     　<div class="text-black-50">売り切れ</div>
+                    　 <% end %>
+                  　</div>
+                <% end %>
           　<% end %>
            </div>
         </div>
