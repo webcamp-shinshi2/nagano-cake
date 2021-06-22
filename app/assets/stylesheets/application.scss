@@ -152,6 +152,12 @@ transform: translateY(0);
 
 
 //about動画背景
+#hoge{
+  font-size:1em;
+  color:#fff;
+  padding:10px;
+  border-radius:0px 0px 5px 5px;
+}
 .header-title {
   border: 5px solid #fff;
   margin-top: 250px;
@@ -199,3 +205,4 @@ transform: translateY(0);
   box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1);
   transform: translateY(-4px);
 }
+
