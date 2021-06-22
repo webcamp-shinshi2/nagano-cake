@@ -33,14 +33,12 @@ Rails.application.routes.draw do
     post 'customers/confirm' => 'customers#confirm'
     patch 'customers/out' => 'customers#out'
     resources :products, only: [:index, :show]
-    resources :cart_items, only: [:index, :update, :create, :destroy] do
-      collection do
-      delete 'destroy_all'
-      end
-    end
-    resources :orders, only: [:new, :create, :index, :show]
-    get 'orders/thanx' => 'orders#thanx'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
     post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanx' => 'orders#thanx'
+    resources :orders, only: [:new, :create, :index, :show] 
+    
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
     root to: "homes#top"
     get 'about' => 'homes#about'
