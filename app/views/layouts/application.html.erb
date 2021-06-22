@@ -8,9 +8,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <div id="wrapper">
+  <div id"wrapper">
     <%= render 'layouts/header' %>
       <main>
         <% if flash[:notice] %>
@@ -21,6 +20,6 @@
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
-    </div>
+  </div>
   </body>
 </html>

@@ -17,9 +17,10 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
- .application {
-  margin: 0;
-  padding: 0;
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
  }
  
  // header
@@ -35,30 +36,132 @@
  }
  nav {
   height: 80px;
-}
-
+ }
 
 // body
-main {
+body {
  background-color: #e3deda;
- height: 658px;
-}
-body,
-#wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+ font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+ color:#462e2e;
+ line-height:25px;
+ font-size:0.95em;
 }
 
 
 // footer
-footer {
-  margin-top: auto;
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 125vh;
 }
-footer {
-  background-color: #b3976d;
-  height: 80px;
+footer{
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+    height: 80px;
+    width: 100%;
+    background-color: #b3976d;
+    margin-top: auto;
 }
 footer p {
- color: #fff;
+  color: #fff;
+}
+
+
+// スライドショー
+/* 高さを指定することにより画像が表示される */
+#theTarget{
+  height: 350px;
+  width: 100%;
+}
+.imegebox{
+  height: 350px;
+  width: 100%;
+}
+.image1 {
+  background-image: url(test1.jpg);
+}
+.image2 {
+  background-image: url(test2.jpg);
+}
+.image3 {
+  background-image: url(test3.jpg);
+}
+.image4 {
+  background-image: url(test4.jpg);
+}
+
+// オプニングアニメーション
+/* Loading背景画面設定　*/
+#splash {
+  /*fixedで全面に固定*/
+position: fixed;
+width: 100%;
+height: 100%;
+z-index: 999;
+background:#412b1c;
+text-align:center;
+color:#fff;
+}
+
+/* Loading画像中央配置　*/
+#splash_logo {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+/* Loading アイコンの大きさ設定　*/
+#splash_logo img {
+width:260px;
+}
+
+/* fadeUpをするアイコンの動き */
+
+.fadeUp{
+animation-name: fadeUpAnime;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+opacity: 0;
+}
+
+@keyframes fadeUpAnime{
+from {
+  opacity: 0;
+transform: translateY(100px);
+}
+
+to {
+  opacity: 1;
+transform: translateY(0);
+}
+}
+
+
+
+//about動画背景
+
+.video-area{
+    position: fixed;
+    z-index: -1;/*最背面に設定*/
+    top: 0;
+    right:0;
+    left:0;
+    bottom:0;
+    overflow: hidden;
+}
+
+#video {
+    /*天地中央配置*/
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*縦横幅指定*/
+    width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+    height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+    min-height: 100%;
+    min-width: 100%;
 }
