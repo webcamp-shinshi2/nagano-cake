@@ -33,7 +33,7 @@
       <% @products.last(4).each do |product| %>
         <div class="col-lg-3 products__imagez">
           <%= link_to product_path(product), style: "color: black;" do %>
-            <div class="image-photo">
+            <div class="image-photo link">
               <%= attachment_image_tag product, :image, fallback:"no-image.png", size: "180x150", class: "shadow" %>
             </div>
             <br>
@@ -46,4 +46,6 @@
     </div>
   </div>
 </div>
-<%= link_to "全ての商品を見る▶", products_path, class: "" %>
+<div class="row">
+  <%= link_to "All products▶", products_path, class: "text-right col-3 h3 my-2 all-products" %>
+</div>

@@ -9,17 +9,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <div id"wrapper">
     <%= render 'layouts/header' %>
-      <main>
+    <div id"wrapper">
         <% if flash[:notice] %>
           <div class="flash">
           <%= flash[:notice] %>
           </div>
         <% end %>
         <%= yield %>
-      </main>
+    <% unless current_page?(about_path) %>
     <%= render 'layouts/footer' %>
-  </div>
+    <% end %>
+    </div>
   </body>
 </html>

@@ -24,6 +24,14 @@
  }
  
  // header
+ .header-logo {
+   font-family: 'Snell Roundhand',sans-serif;
+   font-size: 30px;
+   margin-left: 35px;
+ }
+ .header-logo:hover {
+   font-size: 35px;
+ }
  .logo-navbar {
   height: 80px;
  }
@@ -46,7 +54,10 @@ body {
  line-height:25px;
  font-size:0.95em;
 }
-
+.all-products {
+  font-family: 'Snell Roundhand',sans-serif;
+  color:#462e2e;
+}
 
 // footer
 body,
@@ -56,8 +67,8 @@ body,
   min-height: 125vh;
 }
 footer{
-    position: absolute;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
+    // position: absolute;/*←絶対位置*/
+    // bottom: 0; /*下に固定*/
     height: 80px;
     width: 100%;
     background-color: #b3976d;
@@ -141,6 +152,14 @@ transform: translateY(0);
 
 
 //about動画背景
+.header-title {
+  border: 5px solid #fff;
+  margin-top: 250px;
+  height: 200px;
+}
+.comment {
+  color: #fff;
+}
 
 .video-area{
     position: fixed;
@@ -164,4 +183,19 @@ transform: translateY(0);
     height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
     min-height: 100%;
     min-width: 100%;
+}
+
+
+// 要素が浮くhover
+.link {
+  width: 50%;
+  line-height: 100px;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.12), 0 2px 3px 0 rgba(0,0,0,.22);
+  transition: .3s;
+}
+.link:hover {
+  box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1);
+  transform: translateY(-4px);
 }
