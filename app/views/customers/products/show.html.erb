@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 pt-4 px-3 d-flex">
-      <%= attachment_image_tag @product, :image, class: "img-fluid rounded align-self-center" %>
+      <%= attachment_image_tag @product, :image, class: "img-fluid rounded align-self-center", fallback:"no-image.png" %>
     </div>
     <div class="col-md-6 pt-4">
       <div class="product-information">

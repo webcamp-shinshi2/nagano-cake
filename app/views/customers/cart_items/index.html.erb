@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 mb-3">
-      <h3>ショッピングカート</h3>
+    <div class="mt-4">
+      <h3 class="bg-light">ショッピングカート</h3>
     </div>
   </div>
 
   <div class="row mb-3">
     <div class="col-12 text-right">
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: { confirm: "本当にカートを空にしますか？" } %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当にカートを空にしますか？" } %>
     </div>
   </div>
 
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-sm-6 mb-2">
       <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
     </div>
