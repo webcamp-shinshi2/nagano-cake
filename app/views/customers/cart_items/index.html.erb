@@ -1,23 +1,71 @@
-<h1>Cart_items#index</h1>
-<h3>ショッピングカート</h3>
-  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: { confirm: "本当にカートを空にしますか？" } %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <h3>ショッピングカート</h3>
+    </div>
+  </div>
 
-    <% @cart_items.each do |cart_item| %>
-        <%= cart_item.product.name %>
-       ¥<%= ((cart_item.product.price * 1.1).floor).to_s(:delimited) %>
+  <div class="row mb-3">
+    <div class="col-12 text-right">
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: { confirm: "本当にカートを空にしますか？" } %>
+    </div>
+  </div>
 
-        <%= form_with model: cart_item, local: true do |f| %>
-            <%= f.number_field :amount %>
-            <%= f.submit "変更", class: "btn btn-success" %>
-        <% end %>
+　<div class="row">
+  　<div class="col-12">
+    　<table class="table table-bordered">
+      　<thead class="bg-light">
+          <tr>
+            <th class="text-center">商品名</th>
+            <th class="text-center">単価(税込)</th>
+            <th class="text-center" style="width:20%">数量</th>
+            <th class="text-center">小計</th>
+            <th style="width:15%"></th>
+          </tr>
+        </thead>
+        <tbody class="bg-light">
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td class="align-middle">
+                <%= attachment_image_tag cart_item.product, :image, :fill, 70, 50, format: "jpeg" %>
+                <%= cart_item.product.name %>
+              </td>
+              <td class="text-center align-middle">
+                ¥<%= ((cart_item.product.price * 1.1).floor).to_s(:delimited) %>
+              </td>
+              <td class="text-center align-middle">
+                <%= form_with model: cart_item, local: true, class: "form-inline justify-content-center" do |f| %>
+                    <%= f.number_field :amount, min: 0, max: 10, class: "form-control w-50" %>
+                    <%= f.submit "変更", class: "btn btn-success ml-1" %>
+                <% end %>
+              </td>
+              <td class="text-center align-middle">
+                <%= ((cart_item.product.price * 1.1).floor) * cart_item.amount %>
+              </td>
+              <td class="text-center align-middle">
+                <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-sm-6 mb-2">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-sm-6 d-flex align-items-center justify-content-end">
+      <h5>
+        合計金額 ￥<%= @total_price.round.to_s(:delimited) %>
+      </h5>
+    </div>
+  </div>
 
-
-        <%= link_to "削除する", cart_item_path(cart_item), method: :delete %>
-    <% end %>
-
-    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
-
-    合計金額 ￥<%= @total_price.round.to_s(:delimited) %>
-
-    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+　  </div>
+  </div>
+</div>
