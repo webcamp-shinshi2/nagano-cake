@@ -9,6 +9,7 @@ class Admin::OrdersController < ApplicationController
      @order = Order.find(params[:id])
      @order_details = @order.order_details
     if @order.update(order_params)
+       flash[:notice] = "登録情報を変更しました!"
        @order.change_making_status
        redirect_to admin_order_path(@order)
     else

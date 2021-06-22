@@ -5,10 +5,11 @@ class Admin::OrderDetailsController < ApplicationController
     @order = @order_detail.order
     @order_details = OrderDetails.where(id: @order.id)
     if @order_detail.update(order_detail_params)
-      @order_detail.change_order_status
-      redirect_to admin_order_path(@order)
+       @order_detail.change_order_status
+       flash[:notice] = "ステータスを変更しました!"
+       redirect_to admin_order_path(@order)
     else
-      render 'show'
+       render 'show'
     end
   end
   

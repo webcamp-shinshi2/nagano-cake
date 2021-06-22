@@ -12,10 +12,10 @@
                 　<div class="image-photo">
                   　<%= attachment_image_tag product, :image, fallback:"no-image.png", size: '200x200', class: "shadow" %>
           　　　　　　</div>
-                    <div><%= product.name %></div>
-                    <div><%= (product.price*1.1).round.to_s(:delimited) %>円<small>(税込)</small></div>
-                    <div><% if product.is_sale == true %>
-                     　<div class="text-success">販売中</div>
+                    <%= product.name %></div>
+                    <%= (product.price*1.1).round.to_s(:delimited) %>円<small>(税込)</small></div>
+                    <% if product.is_sale == true %>
+                     　<div class="text-success">販売中</d
                      　<% else %>
                      　<div class="text-black-50">売り切れ</div>
                     　 <% end %>
