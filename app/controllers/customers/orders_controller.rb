@@ -1,4 +1,15 @@
 class Customers::OrdersController < ApplicationController
+  
+  def index
+    @orders = current_customer.orders.page(params[:page]).per(8)
+    
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+  end
+  
   def new
     if cart_items = CartItem.where(customer_id: current_customer.id).present?
       @order = Order.new
