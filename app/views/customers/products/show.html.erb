@@ -1,10 +1,21 @@
-<h1>Products#show</h1>
-<strong><%= @product.name %></strong>
- <%= @product.introduction %>
-<h4>¥<%= (@product.price*1.1).round.to_s(:delimited) %></h4>(税込)
-
-<%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
-  <%= f.hidden_field :product_id, value: @product.id %>
-  <%= f.select :amount, (1..10).to_a, include_blank: '個数選択' %>
-  <%= f.submit 'カートに入れる',  class: "btn btn-success" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 pt-4 px-3 d-flex">
+      <%= attachment_image_tag @product, :image, class: "img-fluid rounded align-self-center", fallback:"no-image.png" %>
+    </div>
+    <div class="col-md-6 pt-4">
+      <div class="product-information">
+        <h1><%= @product.name %></h1>
+        <h3><%= @product.introduction %></h3>
+        <h1 class="mt-5">¥<%= (@product.price*1.1).round.to_s(:delimited) %> <span class="h6">(税込)</span></h1>
+      </div>
+      <div class="cart_product_add">
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= f.select :amount, (1..10).to_a, include_blank: '個数選択', class: "custom-select" %>
+          <%= f.submit 'カートに入れる',  class: "btn btn-success mx-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

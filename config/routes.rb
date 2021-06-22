@@ -29,9 +29,13 @@ Rails.application.routes.draw do
 
   #会員側
   scope module: :customers do
-    resources :customers, only: [:show, :edit, :update]
-    post 'customers/confirm' => 'customers#confirm'
-    patch 'customers/out' => 'customers#out'
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+       get 'customers/confirm' => 'customers#confirm'
+       patch 'customers/out' => 'customers#out'
+      end
+    end
+    
     resources :products, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
