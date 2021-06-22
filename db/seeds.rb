@@ -40,6 +40,55 @@ Product.create!(name: "ショートケーキ",
                 is_sale: true,
                 )
 
+Product.create!(name: "シュークリーム",
+                genre_id: 1,
+                introduction: "シュークリーム",
+                price: 500,
+                is_sale: true,
+                )
+
+Product.create!(name: "クッキー",
+                genre_id: 1,
+                introduction: "クッキー",
+                price: 500,
+                is_sale: true,
+                )
+
+Product.create!(name: "マドレーヌ",
+                genre_id: 1,
+                introduction: "マドレーヌ",
+                price: 500,
+                is_sale: true,
+                )
+
+Product.create!(name: "フィナンシェ",
+                genre_id: 1,
+                introduction: "フィナンシェ",
+                price: 500,
+                is_sale: true,
+                )
+
+Product.create!(name: "キャンディ",
+                genre_id: 1,
+                introduction: "キャンディ",
+                price: 500,
+                is_sale: true,
+                )
+
+Product.create!(name: "プリン",
+                genre_id: 1,
+                introduction: "プリン",
+                price: 500,
+                is_sale: true,
+                )
+
+Product.create!(name: "ティラミス",
+                genre_id: 1,
+                introduction: "ティラミス",
+                price: 500,
+                is_sale: true,
+                )
+
 Address.create!(name: "淑女花子",
                   customer_id: 1,
                   address: "埼玉県三郷市〇〇町0-0",
