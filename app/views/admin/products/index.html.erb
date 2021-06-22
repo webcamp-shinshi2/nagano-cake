@@ -5,7 +5,10 @@
 </div>
 <div class="row justify-content-center mt-3">
   <div class="col-md-10 page-title">
-      <%= render 'admin/products/index', products: @products  %>
+    <%= link_to new_admin_product_path, class: "btn btn- float-right", method: :get do %>
+      <i class="fas fa-plus-circle"></i>
+    <% end %>
+    <%= render 'admin/products/index', products: @products  %>
 
   <div class="row">
     <div class="col-md-4 offset-md-5 pl-5 mt-3">

@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   validates :postal_code,  presence: true
   validates :address, presence: true
   validates :name, presence: true
-  
+
   def change_making_status
     if self.status == "入金待ち"
       self.order_details.update(making_status: :着手不可)
