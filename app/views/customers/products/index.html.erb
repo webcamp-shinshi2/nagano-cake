@@ -1,7 +1,8 @@
- <div class="container">
+
+<div class="container">
   <div class="row mb-3">
     <div class="col-12">
-      <h2>商品一覧 <span class="small">(全<%= @product_count %>件)</span></h2>
+      <h2>商品一覧 <span class="small">(全<%=  @product_count %>件)</span></h2>
     </div>
   </div>
   <div class="row">
@@ -9,6 +10,7 @@
       <div class="col-sm-6 col-xl-3 mb-4">
         <div class="card w-100 bg-transparent border-0 justify-content-between" style="width: 18rem;" >
             <div class="image-photo"><%= attachment_image_tag(product, :image, :fill, 240, 180, class: "card-img-top img-fluid",fallback:"no-image.png" )%></div>
+
             <div class="card-body flex-grow-1 d-flex flex-column justify-content-between">
               <%= link_to product_path(product), class: "text-reset stretched-link" do%>
                 <h5 class="card-title"><%= product.name %></h5>
@@ -29,3 +31,7 @@
       <%= paginate @products%>
       </div>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca9c1a1b93c74e0c5f768cd2b52cae89e38b9c3d
