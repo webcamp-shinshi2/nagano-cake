@@ -40,14 +40,14 @@
     <div class="row">
       <label class="col-lg-3">配送先</label>
       <div class="col-lg-3">
-        <%= link_to "一覧を見る", addresses_path(current_customer.id), class:"btn btn-primary btn-sm w-auto mx-auto" %>
+        <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary btn-sm w-auto mx-auto" %>
       </div>
     </div><br>
 
     <div class="row">
       <label class="col-lg-3">注文履歴</label>
       <div class="col-lg-3">
-        <%= link_to "一覧を見る", orders_path(current_customer.id), class:"btn btn-primary btn-sm w-auto mx-auto" %>
+        <%= link_to "一覧を見る", orders_path, class:"btn btn-primary btn-sm w-auto mx-auto" %>
       </div>
     </div>
 
