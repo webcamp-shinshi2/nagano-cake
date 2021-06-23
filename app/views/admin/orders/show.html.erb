@@ -1,72 +1,82 @@
 <div class="container">
- <div class="row m-4">
-  <div class="col">
-    <h5 class="d-inline bg-gray pr-3 pl-3 page-title">注文履歴詳細</h5>
-  </div>
- </div>
- <div class="row page-title">
-  <div class="col-sm-2">購入者</div>
-  <div class="col-sm-8"> <%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer), class: 'col-sm-2' %></div>
-  <div class="col-sm-2">注文日</div>
-  <div class="col-sm-10"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
-  <div class="col-sm-2">配送先</div>
-  <div class="col-sm-10"><%= @order.address %></div>
-  <div class="col-sm-2"></div>
-  <div class="col-sm-10"><%= @order.name %></div>
-  <div class="col-sm-2">支払方法</div>
-  <div class="col-sm-10"><%= @order.payment_method %></div>
-  <div class="col-sm-2">注文ステータス</div>
-  <div class="col-sm-10"> 
-    <%= form_with model: [:admin, @order], local: true do |f| %>
-    <%= f.collection_select :status, Order.all, :id, :name, size:"30x5", class: "form-control" %>
-    <%= f.submit "更新", class: 'btn btn-success' %>
-    <% end %>
-　</div>
- </div>
+  <h5 class="ml-4 my-4 bg-light d-inline-flex">注文履歴詳細</h5>
+    <div class="row mb-12">
+        <div class="col-md-5 text-left">
+           <table class="table table-bordeless">
+             <tr><th>購入者</th>
+                 <td><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer), class: 'col-sm-2' %></td>
+             </tr>
+             
+             <tr><th>注文日</th>
+                 <th><%= l @order.created_at %></th>
+             </tr>
+             
+             <tr><th>配送先</th>
+                 <td><%= @order.address %><br><%= @order.name %></td>
+             </tr>
+               
+             <tr><th>支払い方法</th>
+             <td><%= @order.payment_method %></td></tr>
+               
+             <tr><th>注文ステータス</th> 
+                 <td>
+                   <%= form_with model: @order, url:admin_order_path(@order.id), local: true do |f| %>
+                   <%= f.select :status, Order.statuses.keys, class: "form-control order_status" %>
+                   <%= f.submit "更新", class: 'btn btn-success' %>
+                   <% end %>
+                 </td>
+             </tr>
+           </table>
+        </div>
+      </div>
 
- <div class="row pt-3 page-title">
-  <div class="col-8">
-    <div id="form_order_product">
-     <div class="row">
-          <table class="table table-hover table-bordered border-dark">
-            <thead class="table-secondary">
-              <tr>
-                <th>商品名</th>
-                <th>単価(税込)</th>
-                <th>数量</th>
-                <th>小計</th>
-                <th>製作ステータス</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @order_details.each do |order_detail| %>
+    
+      <div id="form_order_product">
+        <div class="row mb-12">
+          <div class="col-8">
+            <table class="table table-bordered border-dark">
+              <thead class="table-secondary">
+                <tr>
+                 <th>商品名</th>
+                 <th>単価(税込)</th>
+                 <th>数量</th>
+                 <th>小計</th>
+                 <th>製作ステータス</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+               <% @order_details.each do |order_detail| %>
                <tr>
                 <td><%= order_detail.product.name %></td>
                 <td><%= (order_detail.price * 1.1).floor.to_s(:delimited)  %></td>
                 <td><%= order_detail.amount %></td>
                 <td><%= (order_detail.price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
-                <td> <%= form_with model: [:admin, @order_detail], local: true do |f| %>
-                       <%= f.collection_select :status, OrderDetail.all, :id, size:"30x5", class: "form-control" %>
+                <td> <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), local: true do |f| %>
+                       <%= f.select :making_status, OrderDetail.making_statuses.keys, class: "form-control" %>
                        <%= f.submit "更新", class: 'btn btn-success' %>
                      <% end %>
                 </td>
                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div> 
-    </div>
-  </div>
+               <% end %>
+             </tbody>
+           </table>
+          </div>
   
-  <div class="col-2 text-right">
-    <p>商品合計</p>
-    <p>送料</p>
-    <p>請求金額合計</p>
-  </div>
-  <div class="col-1 text-right">
-    <p><%= @order.total_price.to_s(:delimited) %>円</p>
-    <p><%= @postage %>円</p>
-    <p><%= (@order.total_price + @postage).to_s(:delimited) %>円</p>
-  </div>
+          <div class="col-3 d-flex align-items-end">
+           <table class="table boderless">
+            <tr><th>商品合計</th>
+                <td><%= @order.total_price.to_s(:delimited) %>円</td>
+            </tr>
+     
+            <tr><th>送料</th></th>
+                <td><%= @postage %>円</td>
+            </tr>
+     
+            <tr><th>請求金額合計</th></th>
+                <td><%= (@order.total_price + @postage).to_s(:delimited) %>円</td>
+            </tr>
+            </table>
+          </div>
+      </div> 
 </div>
