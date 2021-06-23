@@ -10,16 +10,16 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div id"wrapper">
+      <div id"wrapper">
         <% if flash[:notice] %>
           <div class="flash">
           <%= flash[:notice] %>
           </div>
         <% end %>
         <%= yield %>
-    <% unless current_page?(about_path) %>
+        <% unless current_page?(about_path) %>
+      </div>
     <%= render 'layouts/footer' %>
     <% end %>
-    </div>
   </body>
 </html>

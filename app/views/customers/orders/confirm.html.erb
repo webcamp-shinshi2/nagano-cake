@@ -33,7 +33,7 @@
         </table>
       </div>
       <div class="col-md-4">
-  
+
 
         <table class="table table-bordered mb-4">
 
@@ -78,6 +78,8 @@
         <%= f.hidden_field :name %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :postal_code %>
+          <!--@address_existの値が0なのか１なのか渡す-->
+        <%= f.hidden_field :address_exist, :value => @address_exist %>
         <%= f.submit "注文を確定する", class:"btn btn-success" %>
       <% end %>
     </div>
