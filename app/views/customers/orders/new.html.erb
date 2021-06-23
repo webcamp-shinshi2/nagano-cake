@@ -1,6 +1,5 @@
 <div class="container">
-  <div class="row">
-
+  <div class="row mt-3">
     <div class="col">
       <h4 class="mt-4 mb-4"><span>　注文情報入力　</span></h4>
         <%= form_with model: @order, url:orders_confirm_path, local: true do |f| %>
@@ -28,7 +27,7 @@
             <div class="form-group ml-5">
               <%= f.radio_button :address_option, 2 %>
               <%= f.label :address, '新しいお届け先', value: 2 %>
-              <div class="ml-4">
+            </div>
             <div class="form-group form-inline">
                 <%= f.label :postal_code, '郵便番号(ハイフンなし)', class:"col-sm-3 control-label justify-content-start" %>
                 <%= f.text_field :postal_code, placeholder: '0000000', class:"form-control" %>
