@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="row mb-3">
+  <div class="row my-3">
     <div class="col-12">
       <h2>商品一覧 <span class="small">(全<%=  @product_count %>件)</span></h2>
     </div>
@@ -9,14 +9,15 @@
     <% @products.each do |product| %>
       <div class="col-sm-6 col-xl-3 mb-4">
         <div class="card w-100 bg-transparent border-0 justify-content-between" style="width: 18rem;" >
-            <div class="image-photo"><%= attachment_image_tag(product, :image, :fill, 240, 180, class: "card-img-top img-fluid",fallback:"no-image.png" )%></div>
-
+          <%= link_to product_path(product), style: "color: black;" do %>
+            <div class="image-photo link">
+              <%= attachment_image_tag product, :image, fallback:"no-image.png", size: "180x150", class: "shadow" %>
+            </div>
             <div class="card-body flex-grow-1 d-flex flex-column justify-content-between">
-              <%= link_to product_path(product), class: "text-reset stretched-link" do%>
-                <h5 class="card-title"><%= product.name %></h5>
-              <% end %>
+              <h5 class="card-title"><%= product.name %></h5>
               <div class="card-text">
                 <%= (product.price*1.1).round.to_s(:delimited) %>円<small>(税込)</small>
+          <% end %>
                 <% if product.is_sale == true %>
                   <div class="text-success">販売中</div>
              　  <% else %>
@@ -29,5 +30,7 @@
     <% end %>
     <div class="col align-self-center">
       <%= paginate @products%>
-      </div>
+    </div>
+  </div>
 </div>
+
