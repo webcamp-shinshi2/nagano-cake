@@ -1,16 +1,6 @@
 class Customers::OrdersController < ApplicationController
   
-  def index
-    @orders = current_customer.orders.page(params[:page]).per(8)
-    
-  end
-  
-  def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details
-  end
-  
-  def new
+ def new
     if cart_items = CartItem.where(customer_id: current_customer.id).present?
       @order = Order.new
       @customer = current_customer
@@ -50,7 +40,18 @@ class Customers::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-      render :confirm
+      #カスタマーの住所登録と入力内容の確認
+      @address = current_customer.addresses.build
+      @address.postal_code = params[:order][:postal_code]
+      @address.address = params[:order][:address]
+      @address.name = params[:order][:name]
+      if @address.save
+        flash[:notice] = "新しい住所が登録されました"
+      else
+        flash[:alert] = "正しい住所を入力してください"
+        redirect_back(fallback_location: root_path)
+      end
+      
 
       unless @order.invalid? == true
         @customer_addresses = Address.where(customer_id: current_customer.id)
@@ -71,16 +72,8 @@ class Customers::OrdersController < ApplicationController
           @order_detail.amount = cart_item.amount
           @order_detail.save
         end
-
-        if params[:order][:address_option] == "1"
-        current_customer.addresses.create(address_params)
-        end
         current_customer.cart_items.destroy_all
         redirect_to orders_thanx_path
-    else
-      @customer = current_customer
-      @addresses = current_customer.addresses
-      render :new
     end
 
   end
