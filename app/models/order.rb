@@ -10,12 +10,6 @@ class Order < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
 
-  def change_making_status
-    if self.status == "入金待ち"
-      self.order_details.update(making_status: :着手不可)
-    elsif self.status == "入金確認"
-      self.order_details.update(making_status: :制作待ち)
-    end
-  end
+ 
 
 end

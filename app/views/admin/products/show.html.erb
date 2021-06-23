@@ -7,7 +7,7 @@
 
  <div class="row mt-5 offset-md-2 page-title">
     <div class="col-md-5 text-center">
-      <%= attachment_image_tag @product, :image, format: 'jpeg', size: "300x300" %>
+      <%= attachment_image_tag @product, :image, format: 'png', size: "300x300", fallback: "no-image.png" %>
     </div>
     <div class="col-md-5 ml-5 text-left">
 
