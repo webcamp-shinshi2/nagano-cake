@@ -12,11 +12,9 @@ class Customer < ApplicationRecord
     super && (self.is_deleted == false)
   end
   
-  VALID_LAST_NAME_KANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/
-  validates :last_name_kana, presence: true, format: { with: VALID_LAST_NAME_KANA_REGEX ,}
-  
-  
-  VALID_FIRST_NAME_KANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/
-  validates :first_name_kana, presence: true, format: { with: VALID_FIRST_NAME_KANA_REGEX }
+   validates :address, :first_name, :last_name, 
+             :first_name_kana, :last_name_kana, 
+             :postal_code, :phone_number, 
+             presence: true
 
 end

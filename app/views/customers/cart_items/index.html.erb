@@ -27,7 +27,7 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td class="align-middle">
-                <%= attachment_image_tag cart_item.product, :image, :fill, 70, 50, format: "jpeg" %>
+                <%= attachment_image_tag cart_item.product, :image, fallback:"no-image.png", size: "50x50", class: "shadow" %>
                 <%= cart_item.product.name %>
               </td>
               <td class="text-center align-middle">
@@ -40,7 +40,7 @@
                 <% end %>
               </td>
               <td class="text-center align-middle">
-                <%= ((cart_item.product.price * 1.1).floor) * cart_item.amount %>
+                ¥<%= (((cart_item.product.price * 1.1).floor) * cart_item.amount).to_s(:delimited) %>
               </td>
               <td class="text-center align-middle">
                 <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>

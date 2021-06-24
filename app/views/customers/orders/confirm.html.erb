@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="text-center my-3">注文情報確認</h3>
+  <h3 class="text-center">注文情報確認</h3>
     <div class="row mt-3">
       <div class="col-md-8">
         <table class="table table-hover table-inverse table-bordered ">
@@ -15,7 +15,7 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
-                  <%= attachment_image_tag cart_item.product, :image, :fill, 70, 50, format: "jpeg" %>
+                  <%= attachment_image_tag cart_item.product, :image, fallback:"no-image.png", size: "50x50", class: "shadow" %>
                   <%= cart_item.product.name %>
                 </td>
                 <td>
@@ -78,7 +78,9 @@
         <%= f.hidden_field :name %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :postal_code %>
-        <%= f.submit "注文を確定する", class:"button" %>
+          <!--@address_existの値が0なのか１なのか渡す-->
+        <%= f.hidden_field :address_exist, :value => @address_exist %>
+        <%= f.submit "注文を確定する", class:"btn btn-success" %>
       <% end %>
     </div>
 </div>
