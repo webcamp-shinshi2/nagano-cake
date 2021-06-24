@@ -102,54 +102,6 @@ footer p {
   background-image: url(test4.jpg);
 }
 
-// オプニングアニメーション
-/* Loading背景画面設定　*/
-#splash {
-  /*fixedで全面に固定*/
-position: fixed;
-width: 100%;
-height: 100%;
-z-index: 999;
-background:#412b1c;
-text-align:center;
-color:#fff;
-}
-
-/* Loading画像中央配置　*/
-#splash_logo {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-}
-
-/* Loading アイコンの大きさ設定　*/
-#splash_logo img {
-width:260px;
-}
-
-/* fadeUpをするアイコンの動き */
-
-.fadeUp{
-animation-name: fadeUpAnime;
-animation-duration:0.5s;
-animation-fill-mode:forwards;
-opacity: 0;
-}
-
-@keyframes fadeUpAnime{
-from {
-  opacity: 0;
-transform: translateY(100px);
-}
-
-to {
-  opacity: 1;
-transform: translateY(0);
-}
-}
-
-
 
 //about動画背景
 .header-title {
@@ -200,3 +152,44 @@ transform: translateY(0);
   transform: translateY(-4px);
 }
 
+// 新規登録、ログインその他ボタン
+.button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #845d5e;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #412b1c;    /* 枠の指定 */
+}
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #412b1c;     /* 文字色     */
+  background    : #ffffff;     /* 背景色     */
+}
+
+// 別のボタンver
+.button2 {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #845d5e;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #412b1c;    /* 枠の指定 */
+}
+.button2:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #412b1c;     /* 文字色     */
+  background    : #ffffff;     /* 背景色     */
+}

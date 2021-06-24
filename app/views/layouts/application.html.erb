@@ -9,6 +9,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <% if current_page?(root_path) %>
+    <div id="splash">
+      <div id="splash_logo">
+      <img src="assets/logo.jpg" alt="" class="fadeUp">
+      </div>
+    </div>
+    <% end %>
     <%= render 'layouts/header' %>
       <div id"wrapper">
         <% if flash[:notice] %>
@@ -17,9 +24,12 @@
           </div>
         <% end %>
         <%= yield %>
-        <% unless current_page?(about_path) %>
-      </div>
+    </div>
+    <% unless current_page?(about_path) %>
     <%= render 'layouts/footer' %>
     <% end %>
+    
+    
+    <!--<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
   </body>
 </html>
