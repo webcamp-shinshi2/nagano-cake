@@ -12,4 +12,9 @@ class Customer < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
+  with_options format: {with: /\A[ァ-ヶー－]+\z/} do
+       validates :first_name_kana
+       validates :last_name_kana
+     end
+
 end

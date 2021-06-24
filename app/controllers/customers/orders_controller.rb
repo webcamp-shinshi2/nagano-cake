@@ -74,7 +74,7 @@ class Customers::OrdersController < ApplicationController
           if @address.save
             flash[:notice] = "新しい住所が登録されました"
           else
-            flash[:alert] = "正しい住所を入力してください"
+            flash[:notice] = "正しい住所を入力してください"
             redirect_back(fallback_location: root_path)
           end
         end
