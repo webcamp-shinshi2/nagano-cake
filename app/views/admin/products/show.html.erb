@@ -29,7 +29,7 @@
             <div class="row">税込価格</div>
             <div class="row">(税抜価格)</div>
           </div>
-           <div class="col my-auto pl-0"><%= (@product.price * 1.1).floor.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</div>
+           <div class="col my-auto pl-0">¥<%= (@product.price * 1.1).floor.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)</div>
         </div>
 
         <div class="row my-2">

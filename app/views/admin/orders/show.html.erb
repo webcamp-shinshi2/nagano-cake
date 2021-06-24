@@ -21,17 +21,17 @@
              <tr><th>注文ステータス</th> 
                  <td>
                    <%= form_with model: @order, url:admin_order_path(@order.id), local: true do |f| %>
-                   <%= f.select :status, Order.statuses.keys, class: "form-control order_status" %>
+                   <%= f.select :status, Order.statuses.keys.to_a, class: "form-control order_status" %>
                    <%= f.submit "更新", class: 'btn btn-success' %>
                    <% end %>
                  </td>
              </tr>
            </table>
         </div>
-      </div>
+    </div>
 
     
-      <div id="form_order_product">
+    <div id="form_order_product">
         <div class="row mb-12">
           <div class="col-8">
             <table class="table table-bordered border-dark">
@@ -46,13 +46,14 @@
               </thead>
               
               <tbody>
+               <% @order.order_details.each do |order_detail| %>
                <tr>
-                <td><%= @order.name %></td>
-                <td><%= (@order_product.price * 1.1).floor.to_s(:delimited)  %></td>
-                <td><%= @order_product.amount %></td>
-                <td><%= (@order_product.price * @order_product.amount * 1.1).floor.to_s(:delimited) %></td>
+                <td><%= order_detail.product.name %></td>
+                <td>¥<%= (order_detail.product.tax_included_price).floor.to_s(:delimited)  %></td>
+                <td><%= order_detail.amount %></td>
+                <td>¥<%= (order_detail.product.tax_included_price * order_detail.amount).floor.to_s(:delimited) %></td>
                 <td> <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), local: true do |f| %>
-                       <%= f.select :making_status, OrderDetail.making_statuses.keys, class: "form-control" %>
+                       <%= f.select :making_status, OrderDetail.making_statuses.keys.to_a, class: "form-control" %>
                        <%= f.submit "更新", class: 'btn btn-success' %>
                      <% end %>
                 </td>
@@ -61,21 +62,22 @@
              </tbody>
            </table>
           </div>
-  
+    
           <div class="col-3 d-flex align-items-end">
            <table class="table boderless">
             <tr><th>商品合計</th>
-                <td><%= @order.total_price.to_s(:delimited) %>円</td>
+                <td>¥<%= @total_price.to_s(:delimited) %></td>
             </tr>
      
             <tr><th>送料</th></th>
-                <td><%= @postage %>円</td>
+                <td>¥<%= @postage %></td>
             </tr>
      
             <tr><th>請求金額合計</th></th>
-                <td><%= (@order.total_price + @postage).to_s(:delimited) %>円</td>
+                <td>¥<%= (@total_price + @postage).to_s(:delimited) %></td>
             </tr>
             </table>
           </div>
-      </div> 
+        </div> 
+    </div>
 </div>
