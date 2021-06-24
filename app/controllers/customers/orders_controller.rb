@@ -1,6 +1,15 @@
 class Customers::OrdersController < ApplicationController
 
- def new
+  def index
+    @orders = current_customer.orders.page(params[:page]).per(8)
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+  end
+  
+  def new
     if cart_items = CartItem.where(customer_id: current_customer.id).present?
       @order = Order.new
       @customer = current_customer
@@ -42,6 +51,13 @@ class Customers::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+      if @order.postal_code.empty? || @order.address.empty? || @order.name.empty?
+        @customer = current_customer
+        @addresses = current_customer.addresses
+        flash[:notice] = "正しい情報を入力してください"
+        render "new"
+      end
+        
       @address_exist = 1
       # params[:order][:address_option] == "2"を通ると @address_existの値が1になる
 
@@ -49,7 +65,6 @@ class Customers::OrdersController < ApplicationController
         @customer_addresses = Address.where(customer_id: current_customer.id)
       end
     end
-
   end
 
   def create
@@ -73,9 +88,6 @@ class Customers::OrdersController < ApplicationController
           @address.name = params[:order][:name]
           if @address.save
             flash[:notice] = "新しい住所が登録されました"
-          else
-            flash[:notice] = "正しい住所を入力してください"
-            redirect_back(fallback_location: root_path)
           end
         end
         current_customer.cart_items.destroy_all

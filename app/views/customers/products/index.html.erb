@@ -16,7 +16,7 @@
             <div class="card-body flex-grow-1 d-flex flex-column justify-content-between">
               <h5 class="card-title"><%= product.name %></h5>
               <div class="card-text">
-                <%= (product.price*1.1).round.to_s(:delimited) %>円<small>(税込)</small>
+                ¥<%= (product.price*1.1).round.to_s(:delimited) %><small>(税込)</small>
           <% end %>
                 <% if product.is_sale == true %>
                   <div class="text-success">販売中</div>
@@ -28,9 +28,9 @@
         </div>
       </div>
     <% end %>
-    <div class="col align-self-center">
+  </div>
+    <div class="row align-self-center">
       <%= paginate @products%>
     </div>
-  </div>
 </div>
 

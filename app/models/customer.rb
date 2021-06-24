@@ -11,6 +11,11 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+  
+   validates :address, :first_name, :last_name, 
+             :first_name_kana, :last_name_kana, 
+             :postal_code, :phone_number, 
+             presence: true
 
   with_options format: {with: /\A[ァ-ヶー－]+\z/} do
        validates :first_name_kana
