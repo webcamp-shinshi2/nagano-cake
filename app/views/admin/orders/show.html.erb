@@ -46,12 +46,11 @@
               </thead>
               
               <tbody>
-               <% @order_details.each do |order_detail| %>
                <tr>
-                <td><%= order_detail.product.name %></td>
-                <td><%= (order_detail.price * 1.1).floor.to_s(:delimited)  %></td>
-                <td><%= order_detail.amount %></td>
-                <td><%= (order_detail.price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
+                <td><%= @order.name %></td>
+                <td><%= (@order_product.price * 1.1).floor.to_s(:delimited)  %></td>
+                <td><%= @order_product.amount %></td>
+                <td><%= (@order_product.price * @order_product.amount * 1.1).floor.to_s(:delimited) %></td>
                 <td> <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), local: true do |f| %>
                        <%= f.select :making_status, OrderDetail.making_statuses.keys, class: "form-control" %>
                        <%= f.submit "更新", class: 'btn btn-success' %>

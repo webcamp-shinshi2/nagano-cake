@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
    def show
     @postage = 800 # 配送料
     @order = Order.find(params[:id])
-    @order_details = OrderDetail.all
+    # @order_product = OrderDetail.where(id: @order.id)
    end
 
    def update
