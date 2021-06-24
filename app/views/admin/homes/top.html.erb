@@ -18,7 +18,7 @@
   <tbody>
      <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order) %></td>
+        <td><%= link_to "#{l order.created_at, format: :default}", admin_order_path(order) %></td>
         <td><%= order.customer.last_name + order.customer.first_name %></td>
         <td><%= order.order_details.count %></td>
         <td><%= order.status %></td>

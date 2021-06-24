@@ -34,7 +34,7 @@
             <br>
             <%= product.name %>
             <br>
-            <%= (product.price*1.1).round.to_s(:delimited) %>円
+            ¥<%= (product.price*1.1).round.to_s(:delimited) %>
           <% end %>
         </div>
       <% end %>
