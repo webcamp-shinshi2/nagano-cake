@@ -92,9 +92,7 @@ footer p {
 .image1 {
   background-image: url(test1.jpg);
 }
-.image2 {
-  background-image: url(test2.jpg);
-}
+
 .image3 {
   background-image: url(test3.jpg);
 }
@@ -192,4 +190,27 @@ footer p {
   box-shadow    : none;        /* カーソル時の影消去 */
   color         : #412b1c;     /* 文字色     */
   background    : #ffffff;     /* 背景色     */
+}
+
+// thankx画面
+.shinshi {
+  font-family: 'Snell Roundhand',sans-serif;
+  font-size: 20px;
+}
+.fab {
+  margin-right: 5px;
+}
+.thankx {
+  font-family: 'Snell Roundhand',sans-serif;
+  font-size: 100px;
+  color: #23171b;
+}
+.thankx-image {
+  background-image: url(cake1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  height: 900px;
+  width: 100%;
 }
