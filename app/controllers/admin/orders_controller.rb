@@ -5,6 +5,7 @@ class Admin::OrdersController < ApplicationController
    def show
     @postage = 800 # 配送料
     @order = Order.find(params[:id])
+    
     @total_price = 0
     @order.order_details.each do |order_detail|
       @total_price += order_detail.amount * order_detail.product.tax_included_price.to_i
