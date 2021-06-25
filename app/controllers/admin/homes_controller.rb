@@ -5,9 +5,9 @@ class Admin::HomesController < ApplicationController
     case params[:index]
     when "0"
       @customer = Customer.find(params[:customer_id])
-      @orders = @customer.orders.page(params[:page]).per(10)
+      @orders = @customer.orders.all.order(created_at: :desc).page(params[:page]).per(10)
     else
-      @orders = Order.all.page(params[:page]).per(10)
+      @orders = Order.all.order(created_at: :desc).page(params[:page]).per(10)
     end
   end
 end
