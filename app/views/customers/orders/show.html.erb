@@ -74,7 +74,7 @@
                   <td><%= order_detail.product.name %></td>
                   <td>¥<%= order_detail.product.tax_included_price.floor.to_s(:delimited) %></td>
                   <td><%= order_detail.amount %></td>
-                  <td>¥<%= (order_detail.product.tax_included_price * order_detail.amount).floor.to_s(:delimited) %></td>
+                  <td><%= (order_detail.product.tax_included_price * order_detail.amount).floor.to_s(:delimited) %></td>
                 </tr>
                 <% end %>
               </tbody>
