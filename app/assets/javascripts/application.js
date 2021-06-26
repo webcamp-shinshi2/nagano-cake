@@ -47,17 +47,8 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
-// $(document).on('turbolinks:load', function () {
-// //logoの表示
-//   $(window).on('load', function () {
-//     $("#splash").delay(1500).fadeOut('slow');//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
-//     $("#splash_logo").delay(1200).fadeOut('slow');//ロゴを1.2秒（1200ms）待機してからフェードアウト
-//   });
-// });
 $(window).on('turbolinks:load',function(){
   $("#splash").delay(2000).fadeOut(800);//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
   $("#splash_logo").delay(1200).fadeOut('slow',function(){
   });
 });
-
-// about文字
