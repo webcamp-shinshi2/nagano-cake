@@ -1,7 +1,7 @@
 class Customers::OrdersController < ApplicationController
 
   def index
-    @orders = current_customer.orders.page(params[:page]).per(8)
+    @orders = current_customer.orders.order(created_at: :desc).page(params[:page]).per(8)
   end
   
   def show
@@ -51,11 +51,11 @@ class Customers::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-      if @order.postal_code.empty? || @order.address.empty? || @order.name.empty?
+      if @order.postal_code.empty? || @order.postal_code.length != 7 || @order.address.empty? || @order.name.empty?
         @customer = current_customer
         @addresses = current_customer.addresses
-        flash[:notice] = "正しい情報を入力してください"
-        render "new"
+        flash.now[:notice] = "正しい情報を入力してください"
+        return render "new"
       end
         
       @address_exist = 1
