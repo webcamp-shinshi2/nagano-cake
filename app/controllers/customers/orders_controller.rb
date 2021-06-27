@@ -1,12 +1,21 @@
 class Customers::OrdersController < ApplicationController
 
- def new
+  def index
+    @orders = current_customer.orders.order(created_at: :desc).page(params[:page]).per(8)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+  end
+
+  def new
     if cart_items = CartItem.where(customer_id: current_customer.id).present?
       @order = Order.new
       @customer = current_customer
       @addresses = current_customer.addresses
     else
-      redirect_to cart_items_path, alert: "カートに商品が入っておりません"
+      redirect_to cart_items_path, notice: "カートに商品が入っておりません"
     end
   end
 
@@ -42,14 +51,16 @@ class Customers::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+      # 郵便番号７桁以外かつ空だったらまたはアドレスが空だったらまたは名前が空だったら情報入力画面で止める
+      if @order.postal_code.empty? || @order.postal_code.length != 7 || @order.address.empty? || @order.name.empty?
+        @customer = current_customer
+        @addresses = current_customer.addresses
+        flash.now[:notice] = "正しい情報を入力してください"
+        return render "new"
+      end
       @address_exist = 1
       # params[:order][:address_option] == "2"を通ると @address_existの値が1になる
-
-      unless @order.invalid? == true
-        @customer_addresses = Address.where(customer_id: current_customer.id)
-      end
     end
-
   end
 
   def create
@@ -73,9 +84,6 @@ class Customers::OrdersController < ApplicationController
           @address.name = params[:order][:name]
           if @address.save
             flash[:notice] = "新しい住所が登録されました"
-          else
-            flash[:alert] = "正しい住所を入力してください"
-            redirect_back(fallback_location: root_path)
           end
         end
         current_customer.cart_items.destroy_all
