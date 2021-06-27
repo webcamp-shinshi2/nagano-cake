@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def top
     case params[:index]
     when "0"
