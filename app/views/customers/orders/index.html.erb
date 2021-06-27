@@ -1,0 +1,41 @@
+<div class="container">
+  <h5 class="ml-4 my-4 bg-light d-inline-flex">注文履歴一覧</h5>
+  <div class="row">
+      <% if @orders.present? %>
+      <div class="row mt-4">
+        <table class="table table-hover table-bordered border-dark">
+          <thead class="table-secondary">
+            <tr>
+              <td>注文日</td>
+              <td>配送先</td>
+              <td>注文商品</td>
+              <td>支払金額</td>
+              <td>ステータス</td>
+              <td>注文詳細</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+                <td><%= order.address %></td>
+                <td>
+                  <% order.order_details.each do |order_detail| %>
+                    <%= order_detail.product.name %><br>
+                  <% end %>
+                </td>
+                <td>¥<%= order.total_price.to_s(:delimited) %></td>
+                <td><%= order.status %></td>
+                <td><%= link_to '表示する', order_path(order.id), class:'btn btn-primary' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="text-center pb-5"><%= paginate @orders %></div>
+      <% else %>
+        <p>注文履歴はありません。</p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

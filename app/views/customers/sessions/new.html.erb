@@ -1,26 +1,45 @@
-<h2>Log in</h2>
+<h4 class="ml-4 my-5 bg-light d-inline-flex">ログイン</h4>
+<div><p class="ml-5 mb-3 bg-light d-inline-flex">会員の方はこちらからログイン</p></div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row ml-5">
+      <label class="col-lg-3 ml-5">メールアドレス</label>
+      <div class="col-lg-3">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", size: "40" %>
+      </div>
+    </div><br>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="row ml-5">
+      <label class="col-lg-3 ml-5">パスワード</label>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %></label>
+      <div class="col-lg-3">
+        <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+      </div>
+    </div><br>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="row">
+      <div class="col-md-8 offset-md-1 ">
+        <div class="actions text-center mr-5">
+          <%= f.submit "ログイン", class: "button col-lg-2 ml-5 px-0" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="row ml-2 mt-5">
+      <div class="col-lg-12">
+        <p class="ml-4 mb-3 bg-light d-inline-flex">登録がお済でない方</p>
+      </div>
+      <div class="col-md-7 mt-2 ml-4">
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "こちら", new_registration_path(resource_name), class:"ml-5" %>
+          <p class="d-lg-inline">から新規登録を行ってください。</p>
+        <% end %>
+      </div>
+    </div>
 
-<%= render "customers/shared/links" %>
+
+
+<!--%= render "customers/shared/links" %>-->

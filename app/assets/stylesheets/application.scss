@@ -1,0 +1,216 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ 
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+ 
+ // header
+ .header-logo {
+   font-family: 'Snell Roundhand',sans-serif;
+   font-size: 30px;
+   margin-left: 35px;
+ }
+ .header-logo:hover {
+   font-size: 35px;
+ }
+ .logo-navbar {
+  height: 80px;
+ }
+ img.logo-navbar {
+  width: 4rem ;
+  height: 4rem ;
+ }
+ .navbar {
+  background-color: #412b1c;
+ }
+ nav {
+  height: 80px;
+ }
+
+// body
+body {
+ background-color: #e3deda;
+ font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+ color:#462e2e;
+ line-height:25px;
+ font-size:0.95em;
+}
+.all-products {
+  font-family: 'Snell Roundhand',sans-serif;
+  color:#462e2e;
+}
+
+// footer
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 125vh;
+}
+footer{
+    // position: absolute;/*←絶対位置*/
+    // bottom: 0; /*下に固定*/
+    height: 80px;
+    width: 100%;
+    background-color: #b3976d;
+    margin-top: auto;
+}
+footer p {
+  color: #fff;
+}
+
+
+// スライドショー
+/* 高さを指定することにより画像が表示される */
+#theTarget{
+  height: 350px;
+  width: 100%;
+}
+.imegebox{
+  height: 350px;
+  width: 100%;
+}
+.image1 {
+  background-image: url(test1.jpg);
+}
+
+.image3 {
+  background-image: url(test3.jpg);
+}
+.image4 {
+  background-image: url(test4.jpg);
+}
+
+
+//about動画背景
+.header-title {
+  border: 5px solid #fff;
+  margin-top: 250px;
+  height: 200px;
+}
+.comment {
+  color: #fff;
+}
+
+.video-area{
+    position: fixed;
+    z-index: -1;/*最背面に設定*/
+    top: 0;
+    right:0;
+    left:0;
+    bottom:0;
+    overflow: hidden;
+}
+
+#video {
+    /*天地中央配置*/
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*縦横幅指定*/
+    width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+    height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+// 要素が浮くhover
+.link {
+  width: 50%;
+  line-height: 100px;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.12), 0 2px 3px 0 rgba(0,0,0,.22);
+  transition: .3s;
+}
+.link:hover {
+  box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1);
+  transform: translateY(-4px);
+}
+
+// 新規登録、ログインその他ボタン
+.button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #845d5e;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #412b1c;    /* 枠の指定 */
+}
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #412b1c;     /* 文字色     */
+  background    : #ffffff;     /* 背景色     */
+}
+
+// 別のボタンver
+.button2 {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #845d5e;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #412b1c;    /* 枠の指定 */
+}
+.button2:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #412b1c;     /* 文字色     */
+  background    : #ffffff;     /* 背景色     */
+}
+
+// thankx画面
+.shinshi {
+  font-family: 'Snell Roundhand',sans-serif;
+  font-size: 20px;
+}
+.fab {
+  margin-right: 5px;
+}
+.thankx {
+  font-family: 'Snell Roundhand',sans-serif;
+  font-size: 100px;
+  color: #23171b;
+}
+.thankx-image {
+  background-image: url(cake1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  height: 900px;
+  width: 100%;
+}

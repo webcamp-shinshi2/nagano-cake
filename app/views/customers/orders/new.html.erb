@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col">
+      <h4 class="mt-4 mb-4"><span>　注文情報入力　</span></h4>
+        <%= form_with model: @order, url:orders_confirm_path, local: true do |f| %>
+          <%= f.label :payment_method, '支払方法', class: "h5" %><br>
+            <div class="form-group col-11 ml-5">
+              <%= f.radio_button :payment_method, :"クレジットカード", checked: true %>
+              <%=f.label:payment_method, 'クレジットカード', value: :クレジットカード %><br>
+              <%= f.radio_button :payment_method, :"銀行振込", checked: true %>
+              <%= f.label :payment_method, '銀行振込',value: :銀行振込 %>
+            </div>
+
+          <%= f.label :address, 'お届け先', class: "h5" %>
+            <div class="form-group ml-5">
+              <%= f.radio_button :address_option, 0, checked: true %>
+              <%= f.label :address, 'ご自身の住所', value: 0 %><br>
+              <%= "〒"+ @customer.postal_code %>
+              <%= @customer.address %> <br>
+              <%= @customer.last_name + @customer.first_name %><br>
+            </div>
+            <div class="form-group ml-5">
+              <%= f.radio_button :address_option, 1 %>
+              <%= f.label :address, '登録済住所から選択', value: 1 %><br>
+              <%= f.collection_select :address_id, current_customer.addresses, :id, :address %>
+            </div>
+            <div class="form-group ml-5">
+              <%= f.radio_button :address_option, 2 %>
+              <%= f.label :address, '新しいお届け先', value: 2 %>
+            </div>
+            <div class="form-group form-inline">
+                <%= f.label :postal_code, '郵便番号(ハイフンなし)', class:"col-sm-3 control-label justify-content-start" %>
+                <%= f.text_field :postal_code, placeholder: '0000000', class:"form-control" %>
+                
+            </div>
+
+            <div class="form-group form-inline">
+              <%= f.label :address, '住所', class:"col-sm-3 control-label justify-content-start" %>
+              <%= f.text_field :address, size: 40, placeholder: '東京都○○区○○町0-0', class:"form-control " %>
+            </div>
+
+            <div class="field form-group form-inline">
+                <%= f.label :name, '宛名', class:"col-sm-3 control-label justify-content-start" %>
+                <%= f.text_field :name, placeholder: '紳士太郎', class:"form-control" %>
+            </div>
+            <div class="actions text-center col-sm-10 ml-3">
+                  <%= f.submit '確認画面へ進む', class:"btn btn-primary mt-4 m-auto" %>
+            </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, admin_product_path(product.id) %></td>
+        <td>¥<%= product.price.to_s(:delimited) %></td>
+        <td><%= product.genre.name %></td>
+        <td><% if product.is_sale == true %>
+              <p class="text-success">販売中</p>
+            <% else %>
+              <p class="text-secondary">販売停止中</p>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,29 +1,92 @@
-<h2>Sign up</h2>
+<h5 class="ml-4 my-4 bg-light d-inline-flex">新規会員登録</h5>
 
+<%= render "customers/shared/error_messages" %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
+<div class="ml-5">
+    <div class="row">
+      <label class="col-lg-3">名前</label>
+      <div class="col-lg-3 yoko">
+        <span class="mr-3">(姓)</span>
+        <%= f.text_field :last_name, autoforcus: true, autocomplete: "last_name",  placeholder: "令和" %>
+      </div>
+      <div class="col-lg-3 yoko">
+        <span class="mr-3">(名)</span>
+        <%= f.text_field :first_name, autoforcus: true, autocomplete: "first_name",  placeholder: "道子" %>
+      </div>
+    </div><br>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="row">
+      <label class="col-lg-3">フリガナ</label>
+      <div class="col-lg-3 yoko">
+        <span>(セイ)</span>
+        <%= f.text_field :last_name_kana, autoforcus: true, autocomplete: "last_name_kana",  placeholder: "レイワ" %>
+      </div>
+
+      <div class="col-lg-3 yoko">
+        <span>(メイ)</span>
+        <%= f.text_field :first_name_kana, autoforcus: true, autocomplete: "firstname_kana",  placeholder: "ミチコ" %>
+      </div>
+    </div><br>
+
+    <div class="row">
+      <label class="col-lg-3">メールアドレス</label>
+      <div class="col-lg-3">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: 'ml-5' %>
+      </div>
+    </div><br>
+
+    <div class="row">
+      <label class="col-lg-3">郵便番号（ハイフンなし）</label>
+      <div class="col-lg-3">
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",  placeholder: "0000000", class: 'ml-5' %>
+      </div>
+    </div><br>
+
+    <div class="row">
+      <label class="col-lg-3">住所</label>
+      <div class="col-lg-6">
+        <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"60",  placeholder: "東京都渋谷区代々木神園町0-0", class: 'ml-5' %>
+      </div>
+    </div><br>
+
+    <div class="row">
+      <label class="col-lg-3">電話番号（ハイフンなし）</label>
+      <div class="col-lg-3">
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",  placeholder: "00000000000", class: 'ml-5' %>
+      </div>
+    </div><br>
+
+    <div class="row">
+      <label class="col-lg-3">パスワード
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %></label>
+      <div class="col-lg-3">
+        <%= f.password_field :password, autocomplete: "encrypted_password", class: 'ml-5' %>
+      </div>
+    </div><br>
+
+    <div class="row">
+      <label class="col-lg-3">パスワード（確認用）</label>
+      <div class="col-lg-3">
+        <%= f.password_field :password_confirmation, autocomplete: "encrypted_password", class: 'ml-5' %>
+      </div>
+    </div><br>
+
+    <div class="row actions ml-5">
+      <div class="col-md-8 offset-md-3">
+      <%= f.submit "新規登録", class: "button col-lg-2" %>
+      </div>
+    </div>
+  <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+<h5 class="ml-4 mt-5 bg-light d-inline-flex">既に登録済みの方</h5>
+  <div class="col-lg-12 mt-3 ml-5 mb-5">
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "こちら", new_customer_session_path %>
+    <% end %>
+    からログインしてください
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+  
+  

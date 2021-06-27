@@ -1,0 +1,22 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M" 
+  activerecord:
+    attributes:
+      customer: 
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        name: 名前
+        nickname: ニックネーム
+        introduction: 自己紹介
+        last_name: 姓
+        first_name: 名
+        last_name_kana: カナ(姓)
+        first_name_kana: カナ(名)
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号

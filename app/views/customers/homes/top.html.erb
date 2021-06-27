@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row mt-4">
+      <div class="col-lg-12 text-center">
+        <div clss="imagebox">
+        <div id="theTarget">
+          <div class="image1"></div>
+          <div class="image3"></div>
+          <div class="image4"></div>
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="top-container pb-3">
+  <p class="text-center">
+    ようこそ、ながのCAKEへ！このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない⽅も商品の閲覧はできますが、購⼊には会員登録が必要になります。
+  </p>
+</div>
+
+
+
+<div class="row justify-content-center align-items-center">
+  <div class="col-lg-10 col-md-11 col-sm-12 mt-2">
+    <h3>新着商品</h3>
+    <div class="d-flex flex-wrap mt-2">
+      <% @products.last(4).each do |product| %>
+        <div class="col-lg-3 products__imagez">
+          <%= link_to product_path(product), style: "color: black;" do %>
+            <div class="image-photo link">
+              <%= attachment_image_tag product, :image, fallback:"no-image.png", size: "180x150", class: "shadow" %>
+            </div>
+            <br>
+            <%= product.name %>
+            <br>
+            ¥<%= (product.price*1.1).round.to_s(:delimited) %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <%= link_to "All products▶", products_path, class: "text-right col-3 h3 my-2 all-products" %>
+</div>

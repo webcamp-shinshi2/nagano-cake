@@ -1,0 +1,30 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <%= link_to " NAGANO-CAKE", root_path, class: "navbar-brand header-logo"%>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="nav-welcome nav-link text-light">ようこそ、<%= current_customer.last_name %>さん！</li>
+          <li><%= link_to ' ', customer_path(current_customer), class: 'fas fa-user-circle nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to ' ', products_path, class: 'fas fa-birthday-cake nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to ' ', cart_items_path, class: 'fas fa-shopping-cart nav-link text-light ml-2 fa-2x'%></li>
+          <li><%= link_to ' ', destroy_customer_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light ml-2 fa-2x' %></li>
+        <% elsif admin_signed_in? %>
+          <li><%= link_to ' ', admin_products_path, class: 'fas fa-birthday-cake nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to ' ', admin_customers_path, class: 'fas fa-users nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to ' ', admin_path, class: 'fas fa-gift nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to ' ', admin_genres_path, class: 'fas fa-paperclip nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to ' ', destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light ml-2 fa-2x' %></li>
+        <% else %>
+          <li><%= link_to '', about_path, class: 'fas fa-link nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to '', products_path, class: 'fas fa-birthday-cake nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to '', new_customer_registration_path, class: 'fas fa-user-plus nav-link text-light ml-2 fa-2x' %></li>
+          <li><%= link_to '', new_customer_session_path, class: 'fas fa-sign-in-alt nav-link text-light ml-2 fa-2x'%></li>
+        <% end %>
+        </ul>
+      </div>
+  </nav>
+</header>
