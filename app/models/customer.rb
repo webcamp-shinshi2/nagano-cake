@@ -17,6 +17,6 @@ class Customer < ApplicationRecord
              :postal_code, :phone_number, 
              presence: true
              
-  VALID_POSTAL_CODE_REGEX = /\A\d{7}\z/
+  VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/ #正規表現を//で/正規表現/とサンドすることを忘れないよう
   validates :postal_code, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
 end
