@@ -1,7 +1,7 @@
 # ながのCAKE ECサイト
 
 DMM Webcampのチーム開発課題として作成した、長野県の洋菓子店のためのECサイト
-
+<img width="1413" alt="スクリーンショット 2021-06-29 15 42 07" src="https://user-images.githubusercontent.com/81672054/125147990-2ea0b880-e16a-11eb-937d-76909439101e.png">
 
 ## 要件
 
